@@ -6,19 +6,7 @@ using System.Threading.Tasks;
 
 namespace MemoOffVocabulary
 {
-    public class VocabularyStructure
-    {
-        public string timestamp;
-        public string keyword;
-        public string valueword;
-
-        public VocabularyStructure(string timestamp, string keyword, string valueword) {
-            this.timestamp = timestamp;
-            this.keyword = keyword;
-            this.valueword = valueword;
-        }
-    }
-
+ 
     public class DeckStructure
     {
         public string keyword;

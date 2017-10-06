@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 using Newtonsoft.Json;
 
@@ -17,48 +18,9 @@ namespace MemoOffVocabulary
 {
     public partial class MemoOffForm : Form
     {
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
-        [DllImport("USER32.DLL",SetLastError = true)]
-        public static extern IntPtr FindWindow(String lpClassName, String lpWindowName);
-
-        [DllImport("user32.dll")]
-        public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
-
-        void BringProcessToTop(IntPtr hWnd)
-        {
-            IntPtr HWND_TOPMOST = new IntPtr(-1);
-            uint SWP_NOACTIVATE = 0x0010;
-            uint SWP_NOMOVE = 0x0002;
-            uint SWP_NOSIZE = 0x0001;
-            SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
-        }
-
         enum tabcontrol1_page{ tabPageStudy = 0, tabPageAddWord=1 };
 
-        string group_path = Directory.GetCurrentDirectory() + "\\Group\\";
-        SortedDictionary<long, DeckStructure> choose_memo_deck = new SortedDictionary<long, DeckStructure>();
-        void get_group_list()
-        {
-            if (!Directory.Exists(group_path))
-                Directory.CreateDirectory(group_path);
-
-            List<string> group_directories = new List<string>();
-            if (Directory.Exists(group_path))
-                group_directories.AddRange(Directory.GetDirectories(group_path));
-
-            comboBoxGroup.BeginUpdate();
-            foreach (string dir in group_directories)
-            {
-                string dir_name = dir.Replace(group_path,"");
-                comboBoxGroup.Items.Add(dir_name);
-            }
-            comboBoxGroup.EndUpdate();
-
-            if (comboBoxGroup.Items.Count > 0)
-                comboBoxGroup.SelectedIndex = 0;
-        }
-
+        MemoOffObject oMemoOffObject;
 
         private void MemoOffForm_Load(object sender, EventArgs e)
         {
@@ -68,47 +30,42 @@ namespace MemoOffVocabulary
         public MemoOffForm()
         {
             InitializeComponent();
-            get_group_list();
 
-            read_deck(group_path + comboBoxGroup.Items[comboBoxGroup.SelectedIndex] + ".json");
-
+            oMemoOffObject = new MemoOffObject();
+            UpdateDeckList(0);
+            DrawCard();
             timer_BringExeTop.Enabled = true;
             timer_study.Enabled = true;
 
-            Read_FirstCard();
         }
 
-        public void Read_FirstCard() {
-
-            if (choose_memo_deck.Count > 0)
+        private void UpdateDeckList(int select_index)
+        {
+            comboBoxDeck.Items.Clear();
+            comboBoxDeck.BeginUpdate();
+            foreach (string deck in oMemoOffObject.lDeckList)
             {
-                textBoxKeyword_s.Text = choose_memo_deck.ElementAt(0).Value.keyword;
-                textBoxValueword_s.Text = choose_memo_deck.ElementAt(0).Value.valueword;
+                comboBoxDeck.Items.Add(deck);
             }
+            comboBoxDeck.EndUpdate();
 
+            if (comboBoxDeck.Items.Count > 0)
+                comboBoxDeck.SelectedIndex = select_index;
         }
 
-        public void UpdateMemo_deck(long key, int sec, int min,int hour,int day)
+        public void DrawCard()
         {
-            DateTime dt = DateTime.ParseExact(key.ToString(), "yyyyMMddHHmmss", null);
-            dt = dt.AddSeconds(sec); dt = dt.AddMinutes(min); dt = dt.AddHours(hour); dt = dt.AddDays(day);
-
-            if (dt < DateTime.Now)
-                dt = DateTime.Now;
-
-            choose_memo_deck.Add( long.Parse(dt.ToString("yyyyMMddHHmmss")), new DeckStructure(choose_memo_deck[key].keyword, choose_memo_deck[key].valueword));     
-            choose_memo_deck.Remove(key);
-        }
-
-        public void read_deck(string deck_path)
-        {
-            if (File.Exists(deck_path))
+            if (oMemoOffObject.CurrentDeck.Count > 0)
             {
-                StringBuilder deck_file = new StringBuilder(File.ReadAllText(deck_path));
-                choose_memo_deck = JsonConvert.DeserializeObject<SortedDictionary<long, DeckStructure>>(deck_file.ToString());
+                textBoxKeyword_s.Text = oMemoOffObject.CurrentDeck.ElementAt(0).Value.keyword;
+                textBoxValueword_s.Text = oMemoOffObject.CurrentDeck.ElementAt(0).Value.valueword;
+            }
+            else
+            {
+                textBoxKeyword_s.Text = "";
+                textBoxValueword_s.Text = "";
             }
         }
-
 
         public void delay(int delay_milliseconds)
         {
@@ -124,55 +81,101 @@ namespace MemoOffVocabulary
             Process []process = Process.GetProcessesByName(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
             if (process.Length>0) 
             {
-                BringProcessToTop(process[0].MainWindowHandle);
+                //win32API.BringProcessToTop(process[0].MainWindowHandle);
             }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string keyword = textBoxKeyword_a.Text;
-            string valueword = textBoxValueword_a.Text;
-            string json_path = group_path + comboBoxGroup.Items[comboBoxGroup.SelectedIndex] + ".json";
-            string datetimeNow = DateTime.Now.ToString("yyyyMMddHHmmss");
-
-            long key = long.Parse(datetimeNow);
-            while (choose_memo_deck.ContainsKey(key))
-            {
-                DateTime dt = DateTime.ParseExact(key.ToString(), "yyyyMMddHHmmss", null);
-                dt = dt.AddSeconds(1);
-                key = long.Parse(dt.ToString("yyyyMMddHHmmss"));
-            }
-            choose_memo_deck.Add(key, new DeckStructure(keyword, valueword));
- 
-            string output = JsonConvert.SerializeObject(choose_memo_deck);
-            File.WriteAllText(json_path, output);
-
-            read_deck(group_path + comboBoxGroup.Items[comboBoxGroup.SelectedIndex] + ".json");
+            oMemoOffObject.AddCardToDeck(textBoxKeyword_a.Text, textBoxValueword_a.Text);
             textBoxKeyword_a.Text = "";
             textBoxValueword_a.Text = "";
-
         }
 
-        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        private void tabControlForm_Selected(object sender, TabControlEventArgs e)
         {
 
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControlForm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == (int)tabcontrol1_page.tabPageStudy)
+            if (tabControlForm.SelectedIndex == (int)tabcontrol1_page.tabPageStudy)
                 timer_study.Enabled = true;
             else
                 timer_study.Enabled = false;
         }
 
+        private void comboBoxDeck_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            oMemoOffObject.sCurrentDeckName = oMemoOffObject.lDeckList[comboBoxDeck.SelectedIndex];
+            oMemoOffObject.ReadDeck();
+            DrawCard();
+        }
+
+        private void menuStripForm_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void ToolStripMenuItemCreateDeck_Click(object sender, EventArgs e)
+        {
+            timer_study.Stop();
+            StringBuilder NewDeck = new StringBuilder();
+            EditForm ef = new EditForm(NewDeck, "Create", "Cancel", "Create Deck");
+            ef.ShowDialog();
+            if (NewDeck.ToString() == "")
+                return;
+
+            oMemoOffObject.lDeckList.Add(NewDeck.ToString());
+            oMemoOffObject.SaveDeckList();
+            UpdateDeckList(comboBoxDeck.SelectedIndex);
+            DrawCard();
+            timer_study.Start();
+        }
+
+        private void ManageDeckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer_study.Stop();
+            ManageDeck md = new ManageDeck();
+            md.ShowDialog();
+            UpdateDeckList(0);
+            DrawCard();
+            timer_study.Start();
+        }
+
+        private void UpdateDeck_DrawCard(int sec, int min, int hour, int day)
+        {
+            timer_study.Stop();
+            if (oMemoOffObject.CurrentDeck.Count > 0)
+            {
+                oMemoOffObject.UpdateMemoDeck(sec, min, hour, day);
+                DrawCard();
+            }
+            timer_study.Start();
+        }
         private void timer_study_Tick(object sender, EventArgs e)
         {
-            if (choose_memo_deck.Count > 0)
-            {
-                UpdateMemo_deck(choose_memo_deck.ElementAt(0).Key, timer_study.Interval/1000, 0, 0, 0);
-                Read_FirstCard();
-            }
+            UpdateDeck_DrawCard(timer_study.Interval / 1000, 0, 0, 0);
         }
+        private void buttonAgain_Click(object sender, EventArgs e)
+        {
+            UpdateDeck_DrawCard(0, oMemoOffObject.study_again, 0, 0);
+        }
+        private void buttonGood_Click(object sender, EventArgs e)
+        {
+            UpdateDeck_DrawCard(0, 0, oMemoOffObject.study_good, 0);
+        }
+        private void buttonEasy_Click(object sender, EventArgs e)
+        {
+            UpdateDeck_DrawCard(0, 0, 0, oMemoOffObject.study_easy);
+        }
+
+        private void ParameterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
     }
 }
