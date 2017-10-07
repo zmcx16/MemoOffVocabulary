@@ -69,6 +69,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.EditText);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EditForm";
             this.Text = "EditDeck";
             this.Load += new System.EventHandler(this.EditForm_Load);

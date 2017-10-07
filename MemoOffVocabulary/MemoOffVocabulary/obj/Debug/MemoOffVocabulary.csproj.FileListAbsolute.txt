@@ -22,3 +22,6 @@ G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffV
 G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.pdb
 G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.ManageDeck.resources
 G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.EditForm.resources
+G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.SettingParameter.resources
+G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\Interop.WMPLib.dll
+G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.csproj.ResolveComReference.cache

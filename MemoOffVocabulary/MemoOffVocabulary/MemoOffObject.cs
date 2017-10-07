@@ -14,11 +14,9 @@ namespace MemoOffVocabulary
 {
     public class MemoOffObject
     {
-        public string sDeck_path = Directory.GetCurrentDirectory() + "\\Deck\\";
         public List<string> lDeckList;
         public SortedDictionary<long, DeckStructure> CurrentDeck;
         public string sCurrentDeckName;
-        public int study_again=1,study_good=1,study_easy=1;
 
         public MemoOffObject()
         {
@@ -37,9 +35,9 @@ namespace MemoOffVocabulary
             lDeckList = new List<string>();
 
             StringBuilder sDeckList = new StringBuilder();
-            win32API.GetPrivateProfileString("Setting", "Deck_list", "",ref sDeckList, sDeck_path + "setting.ini");
+            win32API.GetPrivateProfileString("Setting", "Deck_list", "",ref sDeckList, Global.Deck_path + "setting.ini");
 
-            string[] temp = sDeckList.ToString().Split(',');
+            string[] temp = sDeckList.ToString().Split('\t');
             for (int i = 0; i < temp.Length; i++)
             {
                 if (temp[i]!="")
@@ -54,12 +52,12 @@ namespace MemoOffVocabulary
             {
                 sDeckList.Append( s +",");
             }
-            win32API.WritePrivateProfileString("Setting", "Deck_list", sDeckList.ToString(), sDeck_path + "setting.ini");
+            win32API.WritePrivateProfileString("Setting", "Deck_list", sDeckList.ToString(), Global.Deck_path + "setting.ini");
         }
 
         public void ReadDeck()
         {
-            string Deck = sDeck_path + sCurrentDeckName + ".json";
+            string Deck = Global.Deck_path + sCurrentDeckName + ".json";
 
             if (File.Exists(Deck))
             {
@@ -105,7 +103,7 @@ namespace MemoOffVocabulary
 
         public void SaveDeck() 
         {
-            string DeckFile = sDeck_path + sCurrentDeckName + ".json";
+            string DeckFile = Global.Deck_path + sCurrentDeckName + ".json";
             string output = JsonConvert.SerializeObject(CurrentDeck);
             File.WriteAllText(DeckFile, output);
         }

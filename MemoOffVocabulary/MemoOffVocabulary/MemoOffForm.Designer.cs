@@ -187,7 +187,7 @@
             this.menuStripForm.Location = new System.Drawing.Point(0, 0);
             this.menuStripForm.Name = "menuStripForm";
             this.menuStripForm.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStripForm.Size = new System.Drawing.Size(548, 28);
+            this.menuStripForm.Size = new System.Drawing.Size(548, 27);
             this.menuStripForm.TabIndex = 1;
             this.menuStripForm.Text = "menuStrip1";
             this.menuStripForm.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStripForm_ItemClicked);
@@ -199,27 +199,27 @@
             this.ManageDeckToolStripMenuItem,
             this.ParameterToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(71, 23);
             this.settingToolStripMenuItem.Text = "Setting";
             // 
             // CreateDeckToolStripMenuItem
             // 
             this.CreateDeckToolStripMenuItem.Name = "CreateDeckToolStripMenuItem";
-            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.CreateDeckToolStripMenuItem.Text = "Create Deck";
             this.CreateDeckToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemCreateDeck_Click);
             // 
             // ManageDeckToolStripMenuItem
             // 
             this.ManageDeckToolStripMenuItem.Name = "ManageDeckToolStripMenuItem";
-            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.ManageDeckToolStripMenuItem.Text = "Manage Deck";
             this.ManageDeckToolStripMenuItem.Click += new System.EventHandler(this.ManageDeckToolStripMenuItem_Click);
             // 
             // ParameterToolStripMenuItem
             // 
             this.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem";
-            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.ParameterToolStripMenuItem.Text = "Parameter";
             this.ParameterToolStripMenuItem.Click += new System.EventHandler(this.ParameterToolStripMenuItem_Click);
             // 
@@ -254,6 +254,7 @@
             this.Name = "MemoOffForm";
             this.Text = "MemoOffVocabulary by zmcx16";
             this.Load += new System.EventHandler(this.MemoOffForm_Load);
+            this.Resize += new System.EventHandler(this.MemoOffForm_Resize);
             this.tabControlForm.ResumeLayout(false);
             this.tabPageStudy.ResumeLayout(false);
             this.tabPageStudy.PerformLayout();

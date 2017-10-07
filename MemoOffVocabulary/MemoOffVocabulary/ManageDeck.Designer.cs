@@ -68,21 +68,21 @@
             // AddStripMenuItem
             // 
             this.AddStripMenuItem.Name = "AddStripMenuItem";
-            this.AddStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.AddStripMenuItem.Size = new System.Drawing.Size(135, 24);
             this.AddStripMenuItem.Text = "Add";
             this.AddStripMenuItem.Click += new System.EventHandler(this.AddStripMenuItem_Click);
             // 
             // RenameToolStripMenuItem
             // 
             this.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem";
-            this.RenameToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.RenameToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
             this.RenameToolStripMenuItem.Text = "Rename";
             this.RenameToolStripMenuItem.Click += new System.EventHandler(this.RenameToolStripMenuItem_Click);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
             this.DeleteToolStripMenuItem.Text = "Delete";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
@@ -122,7 +122,7 @@
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(802, 433);
+            this.buttonBack.Location = new System.Drawing.Point(802, 435);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(119, 33);
             this.buttonBack.TabIndex = 4;

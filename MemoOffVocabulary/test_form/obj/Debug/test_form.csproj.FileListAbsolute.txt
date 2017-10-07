@@ -7,3 +7,5 @@ G:\work\MemoOffVocabulary\MemoOffVocabulary\test_form\obj\Debug\test_form.Proper
 G:\work\MemoOffVocabulary\MemoOffVocabulary\test_form\obj\Debug\test_form.csproj.GenerateResource.Cache
 G:\work\MemoOffVocabulary\MemoOffVocabulary\test_form\obj\Debug\test_form.exe
 G:\work\MemoOffVocabulary\MemoOffVocabulary\test_form\obj\Debug\test_form.pdb
+G:\work\MemoOffVocabulary\MemoOffVocabulary\test_form\obj\Debug\Interop.WMPLib.dll
+G:\work\MemoOffVocabulary\MemoOffVocabulary\test_form\obj\Debug\test_form.csproj.ResolveComReference.cache
