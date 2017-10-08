@@ -2,8 +2,9 @@
 
 # Features
 1.	Force program window on top most.
-2.	Automatic study vocabulary card.
-3.	Automatic download & play media sound card --- using Google Text-To-Speech (TTS)
+2.	Support short, medium, long term study function.
+3.	Automatic study vocabulary card.
+4.	Automatic download & play sound --- using Google Text-To-Speech (TTS)
 
 # Demo
 
