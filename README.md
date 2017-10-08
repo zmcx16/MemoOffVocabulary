@@ -1,6 +1,6 @@
 # MemoOffVocabulary
 
-## License
+# License
 This project is licensed under the terms of the GPL-3.0 license.
 
 This project uses:
