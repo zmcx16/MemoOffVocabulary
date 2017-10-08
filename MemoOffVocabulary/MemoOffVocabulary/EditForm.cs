@@ -13,13 +13,14 @@ namespace MemoOffVocabulary
     public partial class EditForm : Form
     {
         StringBuilder EditValue;
-        public EditForm(StringBuilder EditValue, string ButtonOKText, string ButtonCancelText, string FormText)
+        public EditForm(StringBuilder OutputEditValue, string InputEditText, string ButtonOKText, string ButtonCancelText, string FormText)
         {
             InitializeComponent();
             buttonOK.Text = ButtonOKText;
             buttonCancel.Text = ButtonCancelText;
             this.Text = FormText;
-            this.EditValue = EditValue;
+            this.EditText.Text = InputEditText;
+            this.EditValue = OutputEditValue;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)

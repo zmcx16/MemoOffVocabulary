@@ -11,8 +11,9 @@ namespace MemoOffVocabulary
     class Global
     {
         public static KeyValuePair<string, string>[] TTS_SpeechType_MappingTable
-               = { new KeyValuePair<string, string>("EN_us", "English (United States)"), new KeyValuePair<string, string>("EN_uk", "English (United Kingdom)"), 
-                   new KeyValuePair<string, string>("jp", "Japanese"),new KeyValuePair<string, string>("zh_TW", "Traditional Chinese")};
+               = { new KeyValuePair<string, string>("None", "None"),
+                   new KeyValuePair<string, string>("EN_us", "English (United States)"), new KeyValuePair<string, string>("EN_uk", "English (United Kingdom)"), 
+                   new KeyValuePair<string, string>("ja", "Japanese"),new KeyValuePair<string, string>("zh_TW", "Traditional Chinese")};
 
         public static string Deck_path = Directory.GetCurrentDirectory() + "\\Deck\\";
         public static int StudyAgainInterval = 1, StudyGoodInterval = 1, StudyEasyInterval = 1;
@@ -20,8 +21,6 @@ namespace MemoOffVocabulary
         public static bool EnableBringExeTop = true;
         public static bool EnableAutoStudy = true;
         public static int SoundVolume = 50;
-        public static bool EnableTTS = true;
-        public static string TTS_speechtype = TTS_SpeechType_MappingTable[0].Key;
 
         public static void WriteSettingToIni()
         {
@@ -32,8 +31,6 @@ namespace MemoOffVocabulary
             win32API.WritePrivateProfileString("Setting", "EnableBringExeTop", Global.EnableBringExeTop.ToString(), Global.Deck_path + "setting.ini");
             win32API.WritePrivateProfileString("Setting", "EnableAutoStudy", Global.EnableAutoStudy.ToString(), Global.Deck_path + "setting.ini");
             win32API.WritePrivateProfileString("Setting", "SoundVolume", Global.SoundVolume.ToString(), Global.Deck_path + "setting.ini");
-            win32API.WritePrivateProfileString("Setting", "EnableTTS", Global.EnableTTS.ToString(), Global.Deck_path + "setting.ini");
-            win32API.WritePrivateProfileString("Setting", "TTS_speechtype", Global.TTS_speechtype, Global.Deck_path + "setting.ini");
         }
 
         public static void ReadSettingToIni()
@@ -55,11 +52,6 @@ namespace MemoOffVocabulary
                 EnableAutoStudy = bool.Parse(temp.ToString());
                 win32API.GetPrivateProfileString("Setting", "SoundVolume", SoundVolume.ToString(), ref temp, Global.Deck_path + "setting.ini");
                 SoundVolume = int.Parse(temp.ToString());
-                win32API.GetPrivateProfileString("Setting", "EnableTTS", EnableTTS.ToString(), ref temp, Global.Deck_path + "setting.ini");
-                EnableTTS = bool.Parse(temp.ToString());
-                win32API.GetPrivateProfileString("Setting", "TTS_speechtype", TTS_speechtype, ref temp, Global.Deck_path + "setting.ini");
-                if (temp.ToString()!="")
-                    TTS_speechtype = temp.ToString();
             }
             catch (Exception e)
             {

@@ -33,29 +33,33 @@ namespace MemoOffVocabulary
 
         }
 
-        void InitialSetting()
+        void InitialTimeSetting()
         {
             timer_study.Interval = Global.AutoStudyInterval * 1000;
-            timer_BringExeTop.Enabled = Global.EnableBringExeTop;
             timer_study.Enabled = Global.EnableAutoStudy;
-            if (Global.EnableTTS)
-                DownloadTTSAll();
         }
 
         public MemoOffForm()
         {
             InitializeComponent();
 
+            if (!Directory.Exists(Global.Deck_path))
+                Directory.CreateDirectory(Global.Deck_path);
+
             Global.ReadSettingToIni();
-            InitialSetting();
 
             oMemoOffObject = new MemoOffObject();
-            UpdateDeckList(0);
+            UpdateComboBoxDeckList(0);
             DrawCard();
 
+            if (oMemoOffObject.TTS_speechtype != Global.TTS_SpeechType_MappingTable[0].Key)
+                DownloadTTSAll();
+
+            InitialTimeSetting();
 
             IsInitial_completed = true;
             SaveControlsLocationSize();
+
         }
 
         public void SaveControlsLocationSize()
@@ -84,7 +88,7 @@ namespace MemoOffVocabulary
 
         private void DownloadTTSAll()
         {
-            List<Tuple<string, string>> keyword_path_list = new List<Tuple<string, string>>();
+            List<Tuple<string, string, string>> KeywordPathSpeechtype_list = new List<Tuple<string, string, string>>();
             MemoOffObject oMemoOffObject_temp= new MemoOffObject();
             for (int i=0;i<oMemoOffObject_temp.lDeckList.Count;i++)
             {
@@ -95,23 +99,27 @@ namespace MemoOffVocabulary
                 oMemoOffObject_temp.ReadDeck(i);
                 foreach (KeyValuePair <long, DeckStructure> card in oMemoOffObject_temp.CurrentDeck)
                 {
-                    string CardFile_Path = DeckDir_Path + card.Value.keyword + "_" +Global.TTS_speechtype+ ".mp3";
+                    string CardFile_Path = DeckDir_Path + card.Value.keyword + "_" + oMemoOffObject_temp.TTS_speechtype+ ".mp3";
                     if (!File.Exists(CardFile_Path))
-                        keyword_path_list.Add(new Tuple<string, string>(card.Value.keyword, CardFile_Path));
+                        KeywordPathSpeechtype_list.Add(new Tuple<string, string, string>(card.Value.keyword, CardFile_Path, oMemoOffObject_temp.TTS_speechtype));
                 }
             }
-            DownloadTTSThread(keyword_path_list);
+
+            if (KeywordPathSpeechtype_list.Count > 0)
+                TTS.DownloadTTSThread(KeywordPathSpeechtype_list);
         }
 
-        private void DownloadTTSThread(List<Tuple<string, string>> keyword_path_list)
+        private void UpdateComboBoxDeckList(int select_index)
         {
-            GoogleTTS tts_paramter = new GoogleTTS(TTS_type.GoogleTTS, keyword_path_list);
-            Thread t = new Thread(TTS.DownLoadTTS);
-            t.IsBackground = true;
-            t.Start(tts_paramter);
+            UpdateComboBoxDeckList();
+            if (comboBoxDeck.Items.Count > 0 && select_index!=-1)
+                comboBoxDeck.SelectedIndex = select_index;
+            else if (select_index==-1)
+                comboBoxDeck.SelectedIndex = 0;
+
         }
 
-        private void UpdateDeckList(int select_index)
+        private void UpdateComboBoxDeckList()
         {
             comboBoxDeck.Items.Clear();
             comboBoxDeck.BeginUpdate();
@@ -120,9 +128,6 @@ namespace MemoOffVocabulary
                 comboBoxDeck.Items.Add(deck);
             }
             comboBoxDeck.EndUpdate();
-
-            if (comboBoxDeck.Items.Count > 0)
-                comboBoxDeck.SelectedIndex = select_index;
         }
 
         public void PlayTTS(string SoundPath)
@@ -143,8 +148,8 @@ namespace MemoOffVocabulary
                 textBoxKeyword_s.Text = oMemoOffObject.CurrentDeck.ElementAt(0).Value.keyword;
                 textBoxValueword_s.Text = oMemoOffObject.CurrentDeck.ElementAt(0).Value.valueword;
 
-                if (Global.EnableTTS)
-                    PlayTTS(Global.Deck_path + oMemoOffObject.sCurrentDeckName + "\\" + oMemoOffObject.CurrentDeck.ElementAt(0).Value.keyword + "_" + Global.TTS_speechtype + ".mp3");
+                if (oMemoOffObject.TTS_speechtype != Global.TTS_SpeechType_MappingTable[0].Key)
+                    PlayTTS(Global.Deck_path + oMemoOffObject.lDeckList[oMemoOffObject.CurrentDeckIndex] + "\\" + oMemoOffObject.CurrentDeck.ElementAt(0).Value.keyword + "_" + oMemoOffObject.TTS_speechtype + ".mp3");
             }
             else
             {
@@ -153,27 +158,33 @@ namespace MemoOffVocabulary
             }
         }
 
-        public void delay(int delay_milliseconds)
+        private void SetProcessTopMost()
         {
-            DateTime time_before = DateTime.Now;
-            while (((TimeSpan)(DateTime.Now - time_before)).TotalMilliseconds < delay_milliseconds)
+            Process[] process = Process.GetProcessesByName(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
+            if (process.Length > 0)
             {
-                Application.DoEvents();
+                win32API.BringProcessTopMost(process[0].MainWindowHandle);
             }
         }
 
-        private void timer_BringExeTop_Tick(object sender, EventArgs e)
+        private void SetProcessBottom()
         {
-            Process []process = Process.GetProcessesByName(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
-            if (process.Length>0) 
+            Process[] process = Process.GetProcessesByName(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
+            if (process.Length > 0)
             {
-                win32API.BringProcessToTop(process[0].MainWindowHandle);
+                win32API.BringProcessBottom(process[0].MainWindowHandle);
             }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            oMemoOffObject.AddCardToDeck(textBoxKeyword_a.Text, textBoxValueword_a.Text);
+
+            if (!oMemoOffObject.AddCardToDeck(textBoxKeyword_a.Text, textBoxValueword_a.Text))
+                return;
+
+            string CardFile_Path = Global.Deck_path + oMemoOffObject.lDeckList[oMemoOffObject.CurrentDeckIndex] + "\\" + textBoxKeyword_a.Text + "_" + oMemoOffObject.TTS_speechtype + ".mp3";
+            TTS.DownloadTTSThread(textBoxKeyword_a.Text, CardFile_Path, oMemoOffObject.TTS_speechtype);
+
             textBoxKeyword_a.Text = "";
             textBoxValueword_a.Text = "";
         }
@@ -186,58 +197,79 @@ namespace MemoOffVocabulary
         private void tabControlForm_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControlForm.SelectedIndex == (int)tabcontrol1_page.tabPageStudy)
-                timer_study.Enabled = true;
+            {
+                timer_study.Enabled = Global.EnableAutoStudy;
+                if (oMemoOffObject.CurrentDeck.Count>0 && textBoxKeyword_s.Text == "")
+                    DrawCard();
+            }
             else
                 timer_study.Enabled = false;
         }
 
-        private void comboBoxDeck_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            oMemoOffObject.sCurrentDeckName = oMemoOffObject.lDeckList[comboBoxDeck.SelectedIndex];
-            oMemoOffObject.ReadDeck();
-            DrawCard();
-        }
-
-        private void menuStripForm_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void ToolStripMenuItemCreateDeck_Click(object sender, EventArgs e)
         {
-            timer_study.Stop();
+            StopAllTimer();
             StringBuilder NewDeck = new StringBuilder();
-            EditForm ef = new EditForm(NewDeck, "Create", "Cancel", "Create Deck");
+
+            SetProcessBottom();
+            EditForm ef = new EditForm(NewDeck, "", "Create", "Cancel", "Create Deck");
             ef.ShowDialog();
+            if (Global.EnableBringExeTop)
+                SetProcessTopMost();
+
             if (NewDeck.ToString() == "")
                 return;
 
             oMemoOffObject.lDeckList.Add(NewDeck.ToString());
+            oMemoOffObject.WriteDefaultDeckTTS_speechtype(oMemoOffObject.lDeckList.Count - 1);
             oMemoOffObject.SaveDeckList();
-            UpdateDeckList(comboBoxDeck.SelectedIndex);
+            UpdateComboBoxDeckList(comboBoxDeck.SelectedIndex);
             DrawCard();
-            timer_study.Start();
+            StartAllTimer();
         }
 
         private void ManageDeckToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            timer_study.Stop();
+            StopAllTimer();
+
+            string Now_DeckName="";
+            if(comboBoxDeck.SelectedIndex>=0)
+                Now_DeckName = comboBoxDeck.SelectedItem.ToString();
+
+            SetProcessBottom();
             ManageDeck md = new ManageDeck();
             md.ShowDialog();
-            UpdateDeckList(0);
+            if (Global.EnableBringExeTop)
+                SetProcessTopMost();
+
+            oMemoOffObject.ReadDeckList();
+            UpdateComboBoxDeckList();
+
+            if (Now_DeckName!="")
+                comboBoxDeck.SelectedIndex = comboBoxDeck.FindString(Now_DeckName);
+
+            if (comboBoxDeck.SelectedIndex != -1)
+                oMemoOffObject.ReadDeck(comboBoxDeck.SelectedIndex);
+            else if (comboBoxDeck.Items.Count > 0)
+            {
+                comboBoxDeck.SelectedIndex = 0;
+                oMemoOffObject.ReadDeck(comboBoxDeck.SelectedIndex);
+            }
+
             DrawCard();
-            timer_study.Start();
+
+            StartAllTimer();
         }
 
         private void UpdateDeck_DrawCard(int sec, int min, int hour, int day)
         {
-            timer_study.Stop();
+            StopAllTimer();
             if (oMemoOffObject.CurrentDeck.Count > 0)
             {
                 oMemoOffObject.UpdateMemoDeck(sec, min, hour, day);
                 DrawCard();
             }
-            timer_study.Start();
+            StartAllTimer();
         }
         private void timer_study_Tick(object sender, EventArgs e)
         {
@@ -258,11 +290,20 @@ namespace MemoOffVocabulary
 
         private void ParameterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            timer_study.Stop();
+            StopAllTimer();
+
+            SetProcessBottom();
             SettingParameter sp = new SettingParameter();        
             sp.ShowDialog();
-            InitialSetting();
-            timer_study.Start();
+            InitialTimeSetting();
+            if(Global.EnableBringExeTop)
+                SetProcessTopMost();
+
+            oMemoOffObject.GetCurrentDeckTTS_speechtype();
+            if (oMemoOffObject.TTS_speechtype != Global.TTS_SpeechType_MappingTable[0].Key)
+                DownloadTTSAll();
+
+            StartAllTimer();
         }
 
         private void MemoOffForm_Resize(object sender, EventArgs e)
@@ -292,20 +333,66 @@ namespace MemoOffVocabulary
 
                     buttonAdd.Location = new Point(textBoxKeyword_a.Location.X, this.Height - DiffbuttonAddLocation.Y);
                     buttonClear.Location = new Point(textBoxKeyword_a.Location.X + textBoxKeyword_a.Width / 2, this.Height - DiffbuttonClearLocation.Y);
-
-                    buttonGood.Width = textBoxKeyword_s.Width / 3 -10;
-                    buttonEasy.Width = textBoxKeyword_s.Width / 3 -10;
-                    buttonAgain.Width = textBoxKeyword_s.Width / 3 -10;
-
-                    buttonAdd.Width = textBoxKeyword_a.Width / 2 -10;
-                    buttonClear.Width = textBoxKeyword_a.Width / 2 -10 ;
-                    
                 }
-
             }
         }
 
+        private void comboBoxDeck_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            oMemoOffObject.SaveDeck();
+            oMemoOffObject.CurrentDeckIndex = comboBoxDeck.SelectedIndex;
+            oMemoOffObject.ReadDeck();
+            DrawCard();
+        }
 
+        private void StopAllTimer()
+        {
+            timer_study.Stop();
+        }
+
+        private void StartAllTimer()
+        {
+            if(Global.EnableAutoStudy)
+                timer_study.Start();
+        }
+
+        private void MemoOffForm_Activated(object sender, EventArgs e)
+        {
+            if (Global.EnableBringExeTop)
+                SetProcessTopMost();
+        }
+
+        private void MemoOffForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            oMemoOffObject.SaveDeck();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxKeyword_a.Text = "";
+            textBoxValueword_a.Text = "";
+        }
+
+        private void tabPageAddCard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MemoOffForm_ResizeEnd(object sender, EventArgs e)
+        {
+            if (IsInitial_completed)
+            {
+                if (this.Width < OrgThisSize.X)
+                {
+                    buttonGood.Width = textBoxKeyword_s.Width / 3 - 10;
+                    buttonEasy.Width = textBoxKeyword_s.Width / 3 - 10;
+                    buttonAgain.Width = textBoxKeyword_s.Width / 3 - 10;
+
+                    buttonAdd.Width = textBoxKeyword_a.Width / 2 - 10;
+                    buttonClear.Width = textBoxKeyword_a.Width / 2 - 10;
+                }
+            }
+        }
 
     }
 }

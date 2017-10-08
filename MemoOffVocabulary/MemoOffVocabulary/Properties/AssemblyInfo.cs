@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MemoOffVocabulary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("zmcx16")]
 [assembly: AssemblyProduct("MemoOffVocabulary")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright ©  2017 zmcx16")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

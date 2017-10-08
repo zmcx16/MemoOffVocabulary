@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemoOffForm));
             this.tabControlForm = new System.Windows.Forms.TabControl();
             this.tabPageStudy = new System.Windows.Forms.TabPage();
             this.buttonEasy = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.ManageDeckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBoxDeck = new System.Windows.Forms.ComboBox();
-            this.timer_BringExeTop = new System.Windows.Forms.Timer(this.components);
             this.timer_study = new System.Windows.Forms.Timer(this.components);
             this.tabControlForm.SuspendLayout();
             this.tabPageStudy.SuspendLayout();
@@ -142,6 +142,7 @@
             this.tabPageAddCard.TabIndex = 1;
             this.tabPageAddCard.Text = "AddCard";
             this.tabPageAddCard.UseVisualStyleBackColor = true;
+            this.tabPageAddCard.Click += new System.EventHandler(this.tabPageAddCard_Click);
             // 
             // textBoxValueword_a
             // 
@@ -168,6 +169,7 @@
             this.buttonClear.TabIndex = 1;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonAdd
             // 
@@ -190,7 +192,6 @@
             this.menuStripForm.Size = new System.Drawing.Size(548, 27);
             this.menuStripForm.TabIndex = 1;
             this.menuStripForm.Text = "menuStrip1";
-            this.menuStripForm.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStripForm_ItemClicked);
             // 
             // settingToolStripMenuItem
             // 
@@ -205,21 +206,21 @@
             // CreateDeckToolStripMenuItem
             // 
             this.CreateDeckToolStripMenuItem.Name = "CreateDeckToolStripMenuItem";
-            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.CreateDeckToolStripMenuItem.Text = "Create Deck";
             this.CreateDeckToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemCreateDeck_Click);
             // 
             // ManageDeckToolStripMenuItem
             // 
             this.ManageDeckToolStripMenuItem.Name = "ManageDeckToolStripMenuItem";
-            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.ManageDeckToolStripMenuItem.Text = "Manage Deck";
             this.ManageDeckToolStripMenuItem.Click += new System.EventHandler(this.ManageDeckToolStripMenuItem_Click);
             // 
             // ParameterToolStripMenuItem
             // 
             this.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem";
-            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.ParameterToolStripMenuItem.Text = "Parameter";
             this.ParameterToolStripMenuItem.Click += new System.EventHandler(this.ParameterToolStripMenuItem_Click);
             // 
@@ -230,12 +231,7 @@
             this.comboBoxDeck.Name = "comboBoxDeck";
             this.comboBoxDeck.Size = new System.Drawing.Size(158, 23);
             this.comboBoxDeck.TabIndex = 2;
-            this.comboBoxDeck.SelectedIndexChanged += new System.EventHandler(this.comboBoxDeck_SelectedIndexChanged);
-            // 
-            // timer_BringExeTop
-            // 
-            this.timer_BringExeTop.Interval = 1000;
-            this.timer_BringExeTop.Tick += new System.EventHandler(this.timer_BringExeTop_Tick);
+            this.comboBoxDeck.SelectionChangeCommitted += new System.EventHandler(this.comboBoxDeck_SelectionChangeCommitted);
             // 
             // timer_study
             // 
@@ -250,10 +246,14 @@
             this.Controls.Add(this.comboBoxDeck);
             this.Controls.Add(this.tabControlForm);
             this.Controls.Add(this.menuStripForm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripForm;
             this.Name = "MemoOffForm";
-            this.Text = "MemoOffVocabulary by zmcx16";
+            this.Text = "MemoOffVocabulary Ver1.0 by zmcx16";
+            this.Activated += new System.EventHandler(this.MemoOffForm_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MemoOffForm_FormClosing);
             this.Load += new System.EventHandler(this.MemoOffForm_Load);
+            this.ResizeEnd += new System.EventHandler(this.MemoOffForm_ResizeEnd);
             this.Resize += new System.EventHandler(this.MemoOffForm_Resize);
             this.tabControlForm.ResumeLayout(false);
             this.tabPageStudy.ResumeLayout(false);
@@ -285,7 +285,6 @@
         private System.Windows.Forms.Button buttonGood;
         private System.Windows.Forms.Button buttonAgain;
         private System.Windows.Forms.ComboBox comboBoxDeck;
-        private System.Windows.Forms.Timer timer_BringExeTop;
         private System.Windows.Forms.Timer timer_study;
         private System.Windows.Forms.ToolStripMenuItem ManageDeckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ParameterToolStripMenuItem;

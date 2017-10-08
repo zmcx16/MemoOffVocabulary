@@ -46,6 +46,7 @@
             this.listBoxDeckList.ContextMenuStrip = this.contextMenuStripForListbox;
             this.listBoxDeckList.Font = new System.Drawing.Font("新細明體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.listBoxDeckList.FormattingEnabled = true;
+            this.listBoxDeckList.HorizontalScrollbar = true;
             this.listBoxDeckList.ItemHeight = 17;
             this.listBoxDeckList.Location = new System.Drawing.Point(36, 39);
             this.listBoxDeckList.Name = "listBoxDeckList";
@@ -54,6 +55,7 @@
             this.listBoxDeckList.Size = new System.Drawing.Size(176, 429);
             this.listBoxDeckList.TabIndex = 0;
             this.listBoxDeckList.SelectedIndexChanged += new System.EventHandler(this.listBoxDeckList_SelectedIndexChanged);
+            this.listBoxDeckList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBoxDeckList_KeyUp);
             // 
             // contextMenuStripForListbox
             // 
@@ -91,6 +93,7 @@
             this.listBoxKeyWord.ContextMenuStrip = this.contextMenuStripForListbox;
             this.listBoxKeyWord.Font = new System.Drawing.Font("新細明體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.listBoxKeyWord.FormattingEnabled = true;
+            this.listBoxKeyWord.HorizontalScrollbar = true;
             this.listBoxKeyWord.ItemHeight = 17;
             this.listBoxKeyWord.Location = new System.Drawing.Point(277, 39);
             this.listBoxKeyWord.Name = "listBoxKeyWord";
@@ -99,6 +102,7 @@
             this.listBoxKeyWord.Size = new System.Drawing.Size(216, 429);
             this.listBoxKeyWord.TabIndex = 1;
             this.listBoxKeyWord.SelectedIndexChanged += new System.EventHandler(this.listBoxKeyWord_SelectedIndexChanged);
+            this.listBoxKeyWord.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBoxKeyWord_KeyUp);
             // 
             // textBoxValueWord
             // 
@@ -141,8 +145,10 @@
             this.Controls.Add(this.listBoxKeyWord);
             this.Controls.Add(this.listBoxDeckList);
             this.Name = "ManageDeck";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ManageDeck";
             this.Load += new System.EventHandler(this.ManageDeck_Load);
+            this.Resize += new System.EventHandler(this.ManageDeck_Resize);
             this.contextMenuStripForListbox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

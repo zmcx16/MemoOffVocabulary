@@ -29,13 +29,22 @@ namespace MemoOffVocabulary
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
         public static extern int GetPrivateProfileSection(string section, byte[] lpReturnedString, int nSize, string lpFileName);
 
-        public static void BringProcessToTop(IntPtr hWnd)
+        public static void BringProcessTopMost(IntPtr hWnd)
         {
             IntPtr HWND_TOPMOST = new IntPtr(-1);
             uint SWP_NOACTIVATE = 0x0010;
             uint SWP_NOMOVE = 0x0002;
             uint SWP_NOSIZE = 0x0001;
             SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+        }
+
+        public static void BringProcessBottom(IntPtr hWnd)
+        {
+            IntPtr HWND_Bottom = new IntPtr(1);
+            uint SWP_NOACTIVATE = 0x0010;
+            uint SWP_NOMOVE = 0x0002;
+            uint SWP_NOSIZE = 0x0001;
+            SetWindowPos(hWnd, HWND_Bottom, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
         }
 
         public static void GetPrivateProfileString(string section, string key, string def, ref StringBuilder retVal, string filePath)

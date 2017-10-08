@@ -71,6 +71,7 @@
             this.Controls.Add(this.EditText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EditDeck";
             this.Load += new System.EventHandler(this.EditForm_Load);
             this.ResumeLayout(false);

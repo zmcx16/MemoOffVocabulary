@@ -42,9 +42,10 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.groupBoxTTS = new System.Windows.Forms.GroupBox();
+            this.labelTTS = new System.Windows.Forms.Label();
+            this.comboBoxDeckList = new System.Windows.Forms.ComboBox();
             this.comboBoxTTS_SpeechType = new System.Windows.Forms.ComboBox();
             this.trackBarSoundVolume = new System.Windows.Forms.TrackBar();
-            this.checkBoxEnableTTS = new System.Windows.Forms.CheckBox();
             this.groupBoxStudy.SuspendLayout();
             this.groupBoxOthers.SuspendLayout();
             this.groupBoxTTS.SuspendLayout();
@@ -127,7 +128,7 @@
             this.groupBoxOthers.Controls.Add(this.checkBoxAutoStudy);
             this.groupBoxOthers.Controls.Add(this.textBoxAutoStudyInterval);
             this.groupBoxOthers.Font = new System.Drawing.Font("新細明體", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupBoxOthers.Location = new System.Drawing.Point(12, 390);
+            this.groupBoxOthers.Location = new System.Drawing.Point(12, 425);
             this.groupBoxOthers.Name = "groupBoxOthers";
             this.groupBoxOthers.Size = new System.Drawing.Size(262, 128);
             this.groupBoxOthers.TabIndex = 6;
@@ -166,7 +167,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(12, 539);
+            this.buttonSave.Location = new System.Drawing.Point(10, 559);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(98, 43);
             this.buttonSave.TabIndex = 7;
@@ -176,7 +177,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(176, 539);
+            this.buttonCancel.Location = new System.Drawing.Point(176, 559);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(98, 43);
             this.buttonCancel.TabIndex = 8;
@@ -186,57 +187,69 @@
             // 
             // groupBoxTTS
             // 
+            this.groupBoxTTS.Controls.Add(this.labelTTS);
+            this.groupBoxTTS.Controls.Add(this.comboBoxDeckList);
             this.groupBoxTTS.Controls.Add(this.comboBoxTTS_SpeechType);
             this.groupBoxTTS.Controls.Add(this.trackBarSoundVolume);
-            this.groupBoxTTS.Controls.Add(this.checkBoxEnableTTS);
             this.groupBoxTTS.Font = new System.Drawing.Font("新細明體", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBoxTTS.Location = new System.Drawing.Point(12, 198);
             this.groupBoxTTS.Name = "groupBoxTTS";
-            this.groupBoxTTS.Size = new System.Drawing.Size(262, 186);
+            this.groupBoxTTS.Size = new System.Drawing.Size(262, 221);
             this.groupBoxTTS.TabIndex = 9;
             this.groupBoxTTS.TabStop = false;
             this.groupBoxTTS.Text = "Text-To-Speech(TTS)";
             // 
+            // labelTTS
+            // 
+            this.labelTTS.AutoSize = true;
+            this.labelTTS.Location = new System.Drawing.Point(7, 40);
+            this.labelTTS.Name = "labelTTS";
+            this.labelTTS.Size = new System.Drawing.Size(239, 19);
+            this.labelTTS.TabIndex = 11;
+            this.labelTTS.Text = "Enable Google Text-To-Speech";
+            // 
+            // comboBoxDeckList
+            // 
+            this.comboBoxDeckList.FormattingEnabled = true;
+            this.comboBoxDeckList.Location = new System.Drawing.Point(9, 76);
+            this.comboBoxDeckList.Name = "comboBoxDeckList";
+            this.comboBoxDeckList.Size = new System.Drawing.Size(231, 26);
+            this.comboBoxDeckList.TabIndex = 10;
+            this.comboBoxDeckList.SelectionChangeCommitted += new System.EventHandler(this.comboBoxDeckList_SelectionChangeCommitted);
+            // 
             // comboBoxTTS_SpeechType
             // 
             this.comboBoxTTS_SpeechType.FormattingEnabled = true;
-            this.comboBoxTTS_SpeechType.Location = new System.Drawing.Point(9, 81);
+            this.comboBoxTTS_SpeechType.Location = new System.Drawing.Point(10, 125);
             this.comboBoxTTS_SpeechType.Name = "comboBoxTTS_SpeechType";
             this.comboBoxTTS_SpeechType.Size = new System.Drawing.Size(231, 26);
             this.comboBoxTTS_SpeechType.TabIndex = 9;
+            this.comboBoxTTS_SpeechType.SelectionChangeCommitted += new System.EventHandler(this.comboBoxTTS_SpeechType_SelectionChangeCommitted);
             // 
             // trackBarSoundVolume
             // 
-            this.trackBarSoundVolume.Location = new System.Drawing.Point(0, 124);
+            this.trackBarSoundVolume.Location = new System.Drawing.Point(6, 157);
             this.trackBarSoundVolume.Maximum = 100;
             this.trackBarSoundVolume.Name = "trackBarSoundVolume";
             this.trackBarSoundVolume.Size = new System.Drawing.Size(240, 56);
             this.trackBarSoundVolume.TabIndex = 8;
             this.trackBarSoundVolume.Value = 50;
             // 
-            // checkBoxEnableTTS
-            // 
-            this.checkBoxEnableTTS.AutoSize = true;
-            this.checkBoxEnableTTS.Font = new System.Drawing.Font("新細明體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBoxEnableTTS.Location = new System.Drawing.Point(9, 38);
-            this.checkBoxEnableTTS.Name = "checkBoxEnableTTS";
-            this.checkBoxEnableTTS.Size = new System.Drawing.Size(232, 21);
-            this.checkBoxEnableTTS.TabIndex = 5;
-            this.checkBoxEnableTTS.Text = "Enable Google Text-To-Speech";
-            this.checkBoxEnableTTS.UseVisualStyleBackColor = true;
-            // 
             // SettingParameter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 594);
+            this.ClientSize = new System.Drawing.Size(290, 619);
             this.Controls.Add(this.groupBoxTTS);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.groupBoxOthers);
             this.Controls.Add(this.groupBoxStudy);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SettingParameter";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SettingParameter";
+            this.Load += new System.EventHandler(this.SettingParameter_Load);
             this.groupBoxStudy.ResumeLayout(false);
             this.groupBoxStudy.PerformLayout();
             this.groupBoxOthers.ResumeLayout(false);
@@ -266,6 +279,7 @@
         private System.Windows.Forms.GroupBox groupBoxTTS;
         private System.Windows.Forms.ComboBox comboBoxTTS_SpeechType;
         private System.Windows.Forms.TrackBar trackBarSoundVolume;
-        private System.Windows.Forms.CheckBox checkBoxEnableTTS;
+        private System.Windows.Forms.ComboBox comboBoxDeckList;
+        private System.Windows.Forms.Label labelTTS;
     }
 }

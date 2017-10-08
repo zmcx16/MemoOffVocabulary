@@ -16,17 +16,15 @@ namespace MemoOffVocabulary
     {
         public List<string> lDeckList;
         public SortedDictionary<long, DeckStructure> CurrentDeck;
-        public string sCurrentDeckName;
+        public int CurrentDeckIndex;
+        public string TTS_speechtype;
 
         public MemoOffObject()
         {
             lDeckList = new List<string>();
             CurrentDeck = new SortedDictionary<long, DeckStructure>();
-            sCurrentDeckName = "";
-
             ReadDeckList();
-            if (lDeckList.Count > 0)
-                sCurrentDeckName = lDeckList[0];
+            CurrentDeckIndex=0;
             ReadDeck();
         }
 
@@ -50,27 +48,55 @@ namespace MemoOffVocabulary
             StringBuilder sDeckList = new StringBuilder();
             foreach(string s in lDeckList)
             {
-                sDeckList.Append( s +",");
+                sDeckList.Append( s +"\t");
             }
             win32API.WritePrivateProfileString("Setting", "Deck_list", sDeckList.ToString(), Global.Deck_path + "setting.ini");
         }
 
-        public void ReadDeck()
+        public void WriteDefaultDeckTTS_speechtype()
         {
-            string Deck = Global.Deck_path + sCurrentDeckName + ".json";
+            WriteDefaultDeckTTS_speechtype(CurrentDeckIndex);
+        }
 
+        public void WriteDefaultDeckTTS_speechtype(int SelectIndex)
+        {
+            win32API.WritePrivateProfileString(lDeckList[SelectIndex], "TTS_speechtype", Global.TTS_SpeechType_MappingTable[0].Key, Global.Deck_path + "setting.ini");
+        }
+
+        public bool GetCurrentDeckTTS_speechtype()
+        {
+            if (lDeckList.Count == 0)
+                return false;
+            
+            StringBuilder temp = new StringBuilder();
+            win32API.GetPrivateProfileString(lDeckList[CurrentDeckIndex], "TTS_speechtype", "", ref temp, Global.Deck_path + "setting.ini");
+            TTS_speechtype = temp.ToString();
+
+            return true;
+        }
+
+        public bool ReadDeck()
+        {
+            if (lDeckList.Count == 0)
+                return false;
+
+            string Deck = Global.Deck_path + lDeckList[CurrentDeckIndex] + ".json";
             if (File.Exists(Deck))
             {
                 StringBuilder deck_file = new StringBuilder(File.ReadAllText(Deck));
                 CurrentDeck = JsonConvert.DeserializeObject<SortedDictionary<long, DeckStructure>>(deck_file.ToString());
             }else
                 CurrentDeck = new SortedDictionary<long, DeckStructure>();
+
+            GetCurrentDeckTTS_speechtype();
+
+            return true;
         }
 
-        public void ReadDeck(int selectDeckIndex)
+        public bool ReadDeck(int selectDeckIndex)
         {
-            sCurrentDeckName = lDeckList[selectDeckIndex];
-            ReadDeck();
+            CurrentDeckIndex = selectDeckIndex;
+            return ReadDeck();
         }
 
         public long HandleCollisionKey(long original_key)
@@ -85,8 +111,11 @@ namespace MemoOffVocabulary
             return new_key;
         }
 
-        public void UpdateMemoDeck(int sec, int min, int hour, int day)
+        public bool UpdateMemoDeck(int sec, int min, int hour, int day)
         {
+            if (lDeckList.Count == 0)
+                return false;
+
             long original_key = CurrentDeck.ElementAt(0).Key;
 
             DateTime dt = DateTime.ParseExact(original_key.ToString(), "yyyyMMddHHmmss", null);
@@ -99,20 +128,32 @@ namespace MemoOffVocabulary
 
             CurrentDeck.Add(new_key, new DeckStructure(CurrentDeck[original_key].keyword, CurrentDeck[original_key].valueword));
             CurrentDeck.Remove(original_key);
+
+            return true;
         }
 
-        public void SaveDeck() 
+        public bool SaveDeck() 
         {
-            string DeckFile = Global.Deck_path + sCurrentDeckName + ".json";
-            string output = JsonConvert.SerializeObject(CurrentDeck);
-            File.WriteAllText(DeckFile, output);
+            if (lDeckList.Count > 0)
+            {
+                string DeckFile = Global.Deck_path + lDeckList[CurrentDeckIndex] + ".json";
+                string output = JsonConvert.SerializeObject(CurrentDeck);
+                File.WriteAllText(DeckFile, output);
+
+                return true;
+            }
+
+            return false;
         }
 
-        public void AddCardToDeck(string keyword,string valueword)
+        public bool AddCardToDeck(string keyword,string valueword)
         {
+            if (lDeckList.Count == 0)
+                return false;
+
             long new_key = HandleCollisionKey(long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")));
-            CurrentDeck.Add(new_key, new DeckStructure(keyword, valueword));
-            SaveDeck();
+            CurrentDeck.Add(new_key, new DeckStructure(keyword, valueword));            
+            return SaveDeck();
         }
     }
 }
