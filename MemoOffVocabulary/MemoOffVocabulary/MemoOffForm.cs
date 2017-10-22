@@ -228,6 +228,43 @@ namespace MemoOffVocabulary
             StartAllTimer();
         }
 
+        private void webCrawlerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (oMemoOffObject.lDeckList.Count == 0)
+            {
+                MessageBox.Show("At least need create one Deck!!");
+                return;
+            }
+
+            StopAllTimer();
+
+            SetProcessBottom();
+            WebCrawlerForm wcf = new WebCrawlerForm();
+            wcf.ShowDialog();
+
+            if (Global.EnableBringExeTop)
+                SetProcessTopMost();
+
+            oMemoOffObject.ReadDeck(comboBoxDeck.SelectedIndex);
+            DrawCard();
+
+            StartAllTimer();
+        }
+
+        private void comboBoxDeck_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void tabPageStudy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void settingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ManageDeckToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StopAllTimer();

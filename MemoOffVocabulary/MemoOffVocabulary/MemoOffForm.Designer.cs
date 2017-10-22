@@ -49,6 +49,7 @@
             this.ParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBoxDeck = new System.Windows.Forms.ComboBox();
             this.timer_study = new System.Windows.Forms.Timer(this.components);
+            this.webCrawlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlForm.SuspendLayout();
             this.tabPageStudy.SuspendLayout();
             this.tabPageAddCard.SuspendLayout();
@@ -59,10 +60,10 @@
             // 
             this.tabControlForm.Controls.Add(this.tabPageStudy);
             this.tabControlForm.Controls.Add(this.tabPageAddCard);
-            this.tabControlForm.Location = new System.Drawing.Point(7, 29);
+            this.tabControlForm.Location = new System.Drawing.Point(8, 31);
             this.tabControlForm.Name = "tabControlForm";
             this.tabControlForm.SelectedIndex = 0;
-            this.tabControlForm.Size = new System.Drawing.Size(535, 187);
+            this.tabControlForm.Size = new System.Drawing.Size(602, 199);
             this.tabControlForm.TabIndex = 0;
             this.tabControlForm.SelectedIndexChanged += new System.EventHandler(this.tabControlForm_SelectedIndexChanged);
             this.tabControlForm.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControlForm_Selected);
@@ -74,19 +75,20 @@
             this.tabPageStudy.Controls.Add(this.buttonAgain);
             this.tabPageStudy.Controls.Add(this.textBoxValueword_s);
             this.tabPageStudy.Controls.Add(this.textBoxKeyword_s);
-            this.tabPageStudy.Location = new System.Drawing.Point(4, 25);
+            this.tabPageStudy.Location = new System.Drawing.Point(4, 26);
             this.tabPageStudy.Name = "tabPageStudy";
             this.tabPageStudy.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageStudy.Size = new System.Drawing.Size(527, 158);
+            this.tabPageStudy.Size = new System.Drawing.Size(594, 169);
             this.tabPageStudy.TabIndex = 0;
             this.tabPageStudy.Text = "Study";
             this.tabPageStudy.UseVisualStyleBackColor = true;
+            this.tabPageStudy.Click += new System.EventHandler(this.tabPageStudy_Click);
             // 
             // buttonEasy
             // 
-            this.buttonEasy.Location = new System.Drawing.Point(377, 113);
+            this.buttonEasy.Location = new System.Drawing.Point(424, 121);
             this.buttonEasy.Name = "buttonEasy";
-            this.buttonEasy.Size = new System.Drawing.Size(136, 37);
+            this.buttonEasy.Size = new System.Drawing.Size(153, 39);
             this.buttonEasy.TabIndex = 8;
             this.buttonEasy.Text = "Easy";
             this.buttonEasy.UseVisualStyleBackColor = true;
@@ -94,9 +96,9 @@
             // 
             // buttonGood
             // 
-            this.buttonGood.Location = new System.Drawing.Point(193, 113);
+            this.buttonGood.Location = new System.Drawing.Point(217, 121);
             this.buttonGood.Name = "buttonGood";
-            this.buttonGood.Size = new System.Drawing.Size(136, 37);
+            this.buttonGood.Size = new System.Drawing.Size(153, 39);
             this.buttonGood.TabIndex = 7;
             this.buttonGood.Text = "Good";
             this.buttonGood.UseVisualStyleBackColor = true;
@@ -104,9 +106,9 @@
             // 
             // buttonAgain
             // 
-            this.buttonAgain.Location = new System.Drawing.Point(5, 113);
+            this.buttonAgain.Location = new System.Drawing.Point(6, 121);
             this.buttonAgain.Name = "buttonAgain";
-            this.buttonAgain.Size = new System.Drawing.Size(136, 37);
+            this.buttonAgain.Size = new System.Drawing.Size(153, 39);
             this.buttonAgain.TabIndex = 6;
             this.buttonAgain.Text = "Again";
             this.buttonAgain.UseVisualStyleBackColor = true;
@@ -115,18 +117,18 @@
             // textBoxValueword_s
             // 
             this.textBoxValueword_s.Font = new System.Drawing.Font("新細明體", 12.18462F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBoxValueword_s.Location = new System.Drawing.Point(5, 43);
+            this.textBoxValueword_s.Location = new System.Drawing.Point(6, 46);
             this.textBoxValueword_s.Multiline = true;
             this.textBoxValueword_s.Name = "textBoxValueword_s";
-            this.textBoxValueword_s.Size = new System.Drawing.Size(508, 65);
+            this.textBoxValueword_s.Size = new System.Drawing.Size(571, 69);
             this.textBoxValueword_s.TabIndex = 5;
             // 
             // textBoxKeyword_s
             // 
             this.textBoxKeyword_s.Font = new System.Drawing.Font("新細明體", 12.18462F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBoxKeyword_s.Location = new System.Drawing.Point(5, 6);
+            this.textBoxKeyword_s.Location = new System.Drawing.Point(6, 6);
             this.textBoxKeyword_s.Name = "textBoxKeyword_s";
-            this.textBoxKeyword_s.Size = new System.Drawing.Size(508, 32);
+            this.textBoxKeyword_s.Size = new System.Drawing.Size(571, 34);
             this.textBoxKeyword_s.TabIndex = 4;
             // 
             // tabPageAddCard
@@ -135,10 +137,10 @@
             this.tabPageAddCard.Controls.Add(this.textBoxKeyword_a);
             this.tabPageAddCard.Controls.Add(this.buttonClear);
             this.tabPageAddCard.Controls.Add(this.buttonAdd);
-            this.tabPageAddCard.Location = new System.Drawing.Point(4, 25);
+            this.tabPageAddCard.Location = new System.Drawing.Point(4, 26);
             this.tabPageAddCard.Name = "tabPageAddCard";
             this.tabPageAddCard.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAddCard.Size = new System.Drawing.Size(527, 158);
+            this.tabPageAddCard.Size = new System.Drawing.Size(594, 169);
             this.tabPageAddCard.TabIndex = 1;
             this.tabPageAddCard.Text = "AddCard";
             this.tabPageAddCard.UseVisualStyleBackColor = true;
@@ -147,25 +149,25 @@
             // textBoxValueword_a
             // 
             this.textBoxValueword_a.Font = new System.Drawing.Font("新細明體", 12.18462F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBoxValueword_a.Location = new System.Drawing.Point(5, 43);
+            this.textBoxValueword_a.Location = new System.Drawing.Point(6, 46);
             this.textBoxValueword_a.Multiline = true;
             this.textBoxValueword_a.Name = "textBoxValueword_a";
-            this.textBoxValueword_a.Size = new System.Drawing.Size(508, 65);
+            this.textBoxValueword_a.Size = new System.Drawing.Size(571, 69);
             this.textBoxValueword_a.TabIndex = 3;
             // 
             // textBoxKeyword_a
             // 
             this.textBoxKeyword_a.Font = new System.Drawing.Font("新細明體", 12.18462F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBoxKeyword_a.Location = new System.Drawing.Point(5, 6);
+            this.textBoxKeyword_a.Location = new System.Drawing.Point(6, 6);
             this.textBoxKeyword_a.Name = "textBoxKeyword_a";
-            this.textBoxKeyword_a.Size = new System.Drawing.Size(508, 32);
+            this.textBoxKeyword_a.Size = new System.Drawing.Size(571, 34);
             this.textBoxKeyword_a.TabIndex = 2;
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(287, 113);
+            this.buttonClear.Location = new System.Drawing.Point(323, 121);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(227, 37);
+            this.buttonClear.Size = new System.Drawing.Size(255, 39);
             this.buttonClear.TabIndex = 1;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
@@ -173,9 +175,9 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(5, 113);
+            this.buttonAdd.Location = new System.Drawing.Point(6, 121);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(227, 37);
+            this.buttonAdd.Size = new System.Drawing.Size(255, 39);
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -188,8 +190,7 @@
             this.settingToolStripMenuItem});
             this.menuStripForm.Location = new System.Drawing.Point(0, 0);
             this.menuStripForm.Name = "menuStripForm";
-            this.menuStripForm.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStripForm.Size = new System.Drawing.Size(548, 27);
+            this.menuStripForm.Size = new System.Drawing.Size(616, 28);
             this.menuStripForm.TabIndex = 1;
             this.menuStripForm.Text = "menuStrip1";
             // 
@@ -198,39 +199,42 @@
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CreateDeckToolStripMenuItem,
             this.ManageDeckToolStripMenuItem,
-            this.ParameterToolStripMenuItem});
+            this.ParameterToolStripMenuItem,
+            this.webCrawlerToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(71, 23);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
             this.settingToolStripMenuItem.Text = "Setting";
+            this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // CreateDeckToolStripMenuItem
             // 
             this.CreateDeckToolStripMenuItem.Name = "CreateDeckToolStripMenuItem";
-            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
             this.CreateDeckToolStripMenuItem.Text = "Create Deck";
             this.CreateDeckToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemCreateDeck_Click);
             // 
             // ManageDeckToolStripMenuItem
             // 
             this.ManageDeckToolStripMenuItem.Name = "ManageDeckToolStripMenuItem";
-            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
             this.ManageDeckToolStripMenuItem.Text = "Manage Deck";
             this.ManageDeckToolStripMenuItem.Click += new System.EventHandler(this.ManageDeckToolStripMenuItem_Click);
             // 
             // ParameterToolStripMenuItem
             // 
             this.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem";
-            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
             this.ParameterToolStripMenuItem.Text = "Parameter";
             this.ParameterToolStripMenuItem.Click += new System.EventHandler(this.ParameterToolStripMenuItem_Click);
             // 
             // comboBoxDeck
             // 
             this.comboBoxDeck.FormattingEnabled = true;
-            this.comboBoxDeck.Location = new System.Drawing.Point(367, 1);
+            this.comboBoxDeck.Location = new System.Drawing.Point(413, 1);
             this.comboBoxDeck.Name = "comboBoxDeck";
-            this.comboBoxDeck.Size = new System.Drawing.Size(158, 23);
+            this.comboBoxDeck.Size = new System.Drawing.Size(177, 24);
             this.comboBoxDeck.TabIndex = 2;
+            this.comboBoxDeck.SelectedIndexChanged += new System.EventHandler(this.comboBoxDeck_SelectedIndexChanged);
             this.comboBoxDeck.SelectionChangeCommitted += new System.EventHandler(this.comboBoxDeck_SelectionChangeCommitted);
             // 
             // timer_study
@@ -238,11 +242,18 @@
             this.timer_study.Interval = 10000;
             this.timer_study.Tick += new System.EventHandler(this.timer_study_Tick);
             // 
+            // webCrawlerToolStripMenuItem
+            // 
+            this.webCrawlerToolStripMenuItem.Name = "webCrawlerToolStripMenuItem";
+            this.webCrawlerToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
+            this.webCrawlerToolStripMenuItem.Text = "Web Crawler";
+            this.webCrawlerToolStripMenuItem.Click += new System.EventHandler(this.webCrawlerToolStripMenuItem_Click);
+            // 
             // MemoOffForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 220);
+            this.ClientSize = new System.Drawing.Size(616, 235);
             this.Controls.Add(this.comboBoxDeck);
             this.Controls.Add(this.tabControlForm);
             this.Controls.Add(this.menuStripForm);
@@ -284,10 +295,11 @@
         private System.Windows.Forms.Button buttonEasy;
         private System.Windows.Forms.Button buttonGood;
         private System.Windows.Forms.Button buttonAgain;
-        private System.Windows.Forms.ComboBox comboBoxDeck;
         private System.Windows.Forms.Timer timer_study;
         private System.Windows.Forms.ToolStripMenuItem ManageDeckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ParameterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem webCrawlerToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBoxDeck;
     }
 }
 

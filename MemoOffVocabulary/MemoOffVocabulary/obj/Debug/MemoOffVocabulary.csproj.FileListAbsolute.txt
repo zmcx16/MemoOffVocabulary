@@ -25,3 +25,9 @@ G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffV
 G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.SettingParameter.resources
 G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\Interop.WMPLib.dll
 G:\work\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.csproj.ResolveComReference.cache
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\Interop.WMPLib.dll
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.csproj.ResolveComReference.cache
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.EditForm.resources
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.ManageDeck.resources
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.SettingParameter.resources
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.WebCrawlerForm.resources

@@ -148,5 +148,30 @@ namespace MemoOffVocabulary
                 win32API.WritePrivateProfileString(TTS_DecksSpeechType[i].Item1, "TTS_speechtype", Global.TTS_SpeechType_MappingTable[TTS_DecksSpeechType[i].Item2].Key, Global.Deck_path + "setting.ini");
             }
         }
+
+        private void checkBoxEnableBringExeTop_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxOthers_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxStudy_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxDeckList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxTTS_SpeechType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
