@@ -17,6 +17,8 @@ namespace MemoOffVocabulary
 
         static bool TransYahooDictENToCHT(object param)
         {
+            string dd="";
+            WebCommon.WebClient_downloadData(ref dd,"","utf8");
             return true;
         }
         static bool TransGoogleENToCHT(object param)
