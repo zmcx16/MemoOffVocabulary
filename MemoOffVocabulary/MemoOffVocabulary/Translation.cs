@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Net;
+
+using HtmlAgilityPack;
+using System.IO;
+
 namespace MemoOffVocabulary
 {
     class Translation
@@ -17,8 +22,17 @@ namespace MemoOffVocabulary
 
         static bool TransYahooDictENToCHT(object param)
         {
-            string dd="";
-            WebCommon.WebClient_downloadData(ref dd,"","utf8");
+            string keyword = (string)param;
+            string downloadUrl = "https://tw.dictionary.search.yahoo.com/search?p="+ WebUtility.UrlEncode(keyword);
+            MemoryStream RawMeanHTML = new MemoryStream();
+            if (!WebCommon.WebClient_downloadData(ref RawMeanHTML, downloadUrl))
+                return false;
+
+            HtmlDocument doc = new HtmlDocument();
+            doc.Load(RawMeanHTML, Encoding.UTF8);
+
+            string TransText;
+
             return true;
         }
         static bool TransGoogleENToCHT(object param)

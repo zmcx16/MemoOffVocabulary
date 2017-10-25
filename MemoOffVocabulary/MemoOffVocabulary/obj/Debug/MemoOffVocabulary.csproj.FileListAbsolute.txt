@@ -31,3 +31,6 @@ I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabul
 I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.ManageDeck.resources
 I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.SettingParameter.resources
 I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.WebCrawlerForm.resources
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\HtmlAgilityPack.dll
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\HtmlAgilityPack.pdb
+I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\HtmlAgilityPack.xml
