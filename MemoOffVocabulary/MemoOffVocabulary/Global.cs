@@ -53,9 +53,10 @@ namespace MemoOffVocabulary
                 win32API.GetPrivateProfileString("Setting", "SoundVolume", SoundVolume.ToString(), ref temp, Global.Deck_path + "setting.ini");
                 SoundVolume = int.Parse(temp.ToString());
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 WriteSettingToIni();    //Read fail, write default setting
+                EventLog.Write("Read setting to ini fail, write default setting");
             }
         }
     }

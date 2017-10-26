@@ -26,8 +26,10 @@ namespace MemoOffVocabulary
                         {
                             webClient.DownloadFile(new Uri(((GoogleTTS)parameter).DownloadUrl), o.Item2);
                         }
-                        catch (Exception e)
-                        { }             //ignore fail download
+                        catch (Exception ex)
+                        {
+                            EventLog.Write("Fail download Google TTS, ignore fail download");
+                        }
                         break;
                     default:
                         break;

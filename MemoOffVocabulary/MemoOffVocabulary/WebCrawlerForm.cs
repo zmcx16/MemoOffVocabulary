@@ -53,10 +53,12 @@ namespace MemoOffVocabulary
                 SetControlText(labelProgressBar, i+"/"+ wordlist.Count);
                 SetProgressBarValue(progressBarDownload,i);
 
-                Func<object, bool> RunTrans = Translation.TransMappingTable[CrawlerTransSource];
+                Translation.FuncOut< object, string> RunTrans = Translation.TransMappingTable[CrawlerTransSource];
 
-                if (!RunTrans(wordlist[i]))
+                string TransOutput;
+                if (!RunTrans(wordlist[i],out TransOutput))
                     MessageBox.Show("Error Translate " + wordlist[i]);
+
             }
 
             SetControlText(labelProgressBar, wordlist.Count + "/" + wordlist.Count);
