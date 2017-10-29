@@ -66,7 +66,6 @@
             this.tabControlForm.Size = new System.Drawing.Size(602, 199);
             this.tabControlForm.TabIndex = 0;
             this.tabControlForm.SelectedIndexChanged += new System.EventHandler(this.tabControlForm_SelectedIndexChanged);
-            this.tabControlForm.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControlForm_Selected);
             // 
             // tabPageStudy
             // 
@@ -82,7 +81,6 @@
             this.tabPageStudy.TabIndex = 0;
             this.tabPageStudy.Text = "Study";
             this.tabPageStudy.UseVisualStyleBackColor = true;
-            this.tabPageStudy.Click += new System.EventHandler(this.tabPageStudy_Click);
             // 
             // buttonEasy
             // 
@@ -204,7 +202,6 @@
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
             this.settingToolStripMenuItem.Text = "Setting";
-            this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // CreateDeckToolStripMenuItem
             // 
@@ -234,7 +231,6 @@
             this.comboBoxDeck.Name = "comboBoxDeck";
             this.comboBoxDeck.Size = new System.Drawing.Size(177, 24);
             this.comboBoxDeck.TabIndex = 2;
-            this.comboBoxDeck.SelectedIndexChanged += new System.EventHandler(this.comboBoxDeck_SelectedIndexChanged);
             this.comboBoxDeck.SelectionChangeCommitted += new System.EventHandler(this.comboBoxDeck_SelectionChangeCommitted);
             // 
             // timer_study

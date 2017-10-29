@@ -189,11 +189,6 @@ namespace MemoOffVocabulary
             textBoxValueword_a.Text = "";
         }
 
-        private void tabControlForm_Selected(object sender, TabControlEventArgs e)
-        {
-
-        }
-
         private void tabControlForm_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControlForm.SelectedIndex == (int)tabcontrol1_page.tabPageStudy)
@@ -232,7 +227,9 @@ namespace MemoOffVocabulary
         {
             if (oMemoOffObject.lDeckList.Count == 0)
             {
-                MessageBox.Show("At least need create one Deck!!");
+                string ErrorMessage = "At least need create one Deck!!";
+                EventLog.Write(ErrorMessage);
+                MessageBox.Show(ErrorMessage);
                 return;
             }
 
@@ -249,20 +246,6 @@ namespace MemoOffVocabulary
             DrawCard();
 
             StartAllTimer();
-        }
-
-        private void comboBoxDeck_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void tabPageStudy_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void settingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void ManageDeckToolStripMenuItem_Click(object sender, EventArgs e)

@@ -16,6 +16,8 @@ namespace MemoOffVocabulary
     {
         MemoOffObject oMemoOffObject;
         bool bDownloading = false;
+        Thread DownloadingThread;
+        List<string> DownloadList;
 
         delegate void SetControlStringCallback(Control ControlObject, string SetValue);
         delegate void SetProgressBarIntCallback(ProgressBar pb, int SetValue);
@@ -25,6 +27,8 @@ namespace MemoOffVocabulary
             InitializeComponent();
 
             oMemoOffObject = new MemoOffObject();
+            DownloadList = new List<string>();
+
             LoadDeckList();
 
             for (int i = 0; i < Translation.TransMappingTable.Count; i++)
@@ -42,46 +46,72 @@ namespace MemoOffVocabulary
                 comboBoxDeck.SelectedIndex = 0;
         }
 
-        void DownloadThread(object o)
+        void DownloadThread()
         {
+            int index = 0, EndCount = DownloadList.Count;
+
+            this.Invoke(new Func<bool>(() => this.buttonDownload.Enabled = false));
+            this.Invoke(new Func<bool>(() => this.comboBoxDeck.Enabled = false));
+            this.Invoke(new Func<bool>(() => this.comboBoxParseSource.Enabled=false));
+            this.Invoke(new Func<bool>(() => this.textBoxWordList.Enabled = false));
+
             string CrawlerTransSource = (string)this.Invoke(new Func<string>(() => this.comboBoxParseSource.Text));
 
             bDownloading = true;
-            List<string> wordlist = (List<string>)o;
-            for (int i=0;i<wordlist.Count;i++)
+            while(DownloadList.Count>0)
             {
-                SetControlText(labelProgressBar, i+"/"+ wordlist.Count);
-                SetProgressBarValue(progressBarDownload,i);
+                SetControlText(labelProgressBar, index + "/"+ EndCount);
+                SetProgressBarValue(progressBarDownload, index);
 
                 Translation.FuncOut< object, string> RunTrans = Translation.TransMappingTable[CrawlerTransSource];
 
                 string TransOutput;
-                if (!RunTrans(wordlist[i],out TransOutput))
-                    MessageBox.Show("Error Translate " + wordlist[i]);
+                if (!RunTrans(DownloadList[0], out TransOutput))
+                {
+                    string ErrorMessage = "Error Translate " + DownloadList[0];
+                    EventLog.Write(ErrorMessage);
+                    MessageBox.Show(ErrorMessage);
+                }
 
+                if (!oMemoOffObject.AddCardToDeck(DownloadList[0], TransOutput))
+                {
+                    string ErrorMessage = "Error Add " + DownloadList[0] + "Card To Deck";
+                    EventLog.Write(ErrorMessage);
+                    MessageBox.Show(ErrorMessage);
+                }
+
+                DownloadList.RemoveAt(0);
+                index++;
             }
 
-            SetControlText(labelProgressBar, wordlist.Count + "/" + wordlist.Count);
-            SetProgressBarValue(progressBarDownload, wordlist.Count);
+            SetControlText(labelProgressBar, EndCount + "/" + EndCount);
+            SetProgressBarValue(progressBarDownload, EndCount);
             bDownloading = false;
+
+            this.Invoke(new Func<bool>(() => this.buttonDownload.Enabled = true));
+            this.Invoke(new Func<bool>(() => this.comboBoxDeck.Enabled = true));
+            this.Invoke(new Func<bool>(() => this.comboBoxParseSource.Enabled = true));
+            this.Invoke(new Func<bool>(() => this.textBoxWordList.Enabled = true));
         }
 
         void ParserSource()
         {
-            List<string> wordlist = new List<string>();
             string[] temp_a = textBoxWordList.Text.Split('\n');
             for(int i = 0; i < temp_a.Length; i++)
             {
                 string temp_s = temp_a[i].Replace("\r","");
                 if(temp_s!="")
-                    wordlist.Add(temp_s);
+                    DownloadList.Add(temp_s);
             }
-            progressBarDownload.Maximum = wordlist.Count;
-            
-            Thread t = new Thread(this.DownloadThread);
-            t.IsBackground = true;
-            t.Start(wordlist);
 
+            if (DownloadList.Count > 0)
+            {
+                progressBarDownload.Maximum = DownloadList.Count;
+
+                DownloadingThread = new Thread(this.DownloadThread);
+                DownloadingThread.IsBackground = true;
+                DownloadingThread.Start();
+            }
         }
 
         private void SetControlText(Control control,string text)
@@ -109,46 +139,6 @@ namespace MemoOffVocabulary
                 pb.Value = value;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void WebCrawlerForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxParseSource_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonDownload_Click(object sender, EventArgs e)
         {
             if(!bDownloading)
@@ -161,6 +151,11 @@ namespace MemoOffVocabulary
         {
             oMemoOffObject.CurrentDeckIndex = comboBoxDeck.SelectedIndex;
             oMemoOffObject.ReadDeck();
+        }
+
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

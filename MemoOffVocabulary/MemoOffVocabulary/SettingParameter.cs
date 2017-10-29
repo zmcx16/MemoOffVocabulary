@@ -103,7 +103,9 @@ namespace MemoOffVocabulary
 
             if (!CheckValid())
             {
-                MessageBox.Show("Parameter invalid!!");
+                string ErrorMessage = "Parameter invalid!!";
+                EventLog.Write(ErrorMessage);
+                MessageBox.Show(ErrorMessage);
                 return;
             }
 

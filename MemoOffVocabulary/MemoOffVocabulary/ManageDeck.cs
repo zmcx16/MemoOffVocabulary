@@ -151,7 +151,9 @@ namespace MemoOffVocabulary
                     return;
                 else if (oMemoOffObject.lDeckList.Contains(NewDeck.ToString()))
                 {
-                    MessageBox.Show("Duplicate deck, try another deck name!!");
+                    string ErrorMessage = "Duplicate deck, try another deck name!!";
+                    EventLog.Write(ErrorMessage);
+                    MessageBox.Show(ErrorMessage);
                     return;
                 }
 
@@ -196,7 +198,9 @@ namespace MemoOffVocabulary
                     return;
                 else if (File.Exists(Global.Deck_path + sRenameDeck.ToString() + ".json") || Directory.Exists(Global.Deck_path + sRenameDeck.ToString()))
                 {
-                    MessageBox.Show("Duplicate directory or File, try another deck name!!");
+                    string ErrorMessage = "Duplicate directory or File, try another deck name!!";
+                    EventLog.Write(ErrorMessage);
+                    MessageBox.Show(ErrorMessage);
                     return;
                 }
 
