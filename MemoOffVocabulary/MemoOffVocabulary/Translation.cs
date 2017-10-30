@@ -51,7 +51,7 @@ namespace MemoOffVocabulary
             MeanHtmlDoc.Load(RawMeanHTML,Encoding.UTF8);
 
             HtmlNode NavNode = MeanHtmlDoc.DocumentNode.SelectSingleNode("//*[@id=\"web\"]/ol[1]/li[2]/div/ul");
-            if (NavNode.ChildNodes.Count == 0)
+            if (NavNode==null || NavNode.ChildNodes.Count == 0)
                 return false;
 
             HtmlNodeCollection NavNodeChilds = NavNode.ChildNodes;

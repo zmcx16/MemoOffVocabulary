@@ -46,19 +46,26 @@ namespace MemoOffVocabulary
                 comboBoxDeck.SelectedIndex = 0;
         }
 
+        void SetControlEnable(bool set_value)
+        {
+            this.Invoke(new Func<bool>(() => this.buttonDownload.Enabled = set_value));
+            this.Invoke(new Func<bool>(() => this.buttonBack.Enabled = set_value));
+            this.Invoke(new Func<bool>(() => this.comboBoxDeck.Enabled = set_value));
+            this.Invoke(new Func<bool>(() => this.comboBoxParseSource.Enabled = set_value));
+            this.Invoke(new Func<bool>(() => this.textBoxWordList.Enabled = set_value));
+        }
+
         void DownloadThread()
         {
             int index = 0, EndCount = DownloadList.Count;
 
-            this.Invoke(new Func<bool>(() => this.buttonDownload.Enabled = false));
-            this.Invoke(new Func<bool>(() => this.comboBoxDeck.Enabled = false));
-            this.Invoke(new Func<bool>(() => this.comboBoxParseSource.Enabled=false));
-            this.Invoke(new Func<bool>(() => this.textBoxWordList.Enabled = false));
+            SetControlEnable(false);
 
             string CrawlerTransSource = (string)this.Invoke(new Func<string>(() => this.comboBoxParseSource.Text));
 
             bDownloading = true;
-            while(DownloadList.Count>0)
+            int ErrorCount = 0;
+            while(DownloadList.Count>0 && bDownloading)
             {
                 SetControlText(labelProgressBar, index + "/"+ EndCount);
                 SetProgressBarValue(progressBarDownload, index);
@@ -70,32 +77,42 @@ namespace MemoOffVocabulary
                 {
                     string ErrorMessage = "Error Translate " + DownloadList[0];
                     EventLog.Write(ErrorMessage);
-                    MessageBox.Show(ErrorMessage);
+                    ErrorCount++;
                 }
-
-                if (!oMemoOffObject.AddCardToDeck(DownloadList[0], TransOutput))
+                else if (!oMemoOffObject.AddCardToDeck(DownloadList[0], TransOutput))
                 {
                     string ErrorMessage = "Error Add " + DownloadList[0] + "Card To Deck";
                     EventLog.Write(ErrorMessage);
-                    MessageBox.Show(ErrorMessage);
+                    ErrorCount++;
                 }
 
                 DownloadList.RemoveAt(0);
                 index++;
             }
 
-            SetControlText(labelProgressBar, EndCount + "/" + EndCount);
-            SetProgressBarValue(progressBarDownload, EndCount);
+            SetControlText(labelProgressBar, index + "/" + EndCount);
+            SetProgressBarValue(progressBarDownload, index);
             bDownloading = false;
+            UpdateTextBoxWordList();
 
-            this.Invoke(new Func<bool>(() => this.buttonDownload.Enabled = true));
-            this.Invoke(new Func<bool>(() => this.comboBoxDeck.Enabled = true));
-            this.Invoke(new Func<bool>(() => this.comboBoxParseSource.Enabled = true));
-            this.Invoke(new Func<bool>(() => this.textBoxWordList.Enabled = true));
+            MessageBox.Show("Error Translate or Add " + ErrorCount + "word... please refer EventLog.");
+
+            SetControlEnable(true);
+        }
+
+        void UpdateTextBoxWordList()
+        {
+            StringBuilder temp = new StringBuilder();
+            foreach(string s in DownloadList)
+            {
+                temp.Append(s+"\r\n");
+            }
+            SetControlText(textBoxWordList, temp.ToString());
         }
 
         void ParserSource()
         {
+            DownloadList = new List<string>();
             string[] temp_a = textBoxWordList.Text.Split('\n');
             for(int i = 0; i < temp_a.Length; i++)
             {
@@ -155,7 +172,12 @@ namespace MemoOffVocabulary
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
+            bDownloading = false;
+        }
 
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

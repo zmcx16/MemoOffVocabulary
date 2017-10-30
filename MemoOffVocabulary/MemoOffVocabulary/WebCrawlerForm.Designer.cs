@@ -42,6 +42,7 @@
             // textBoxWordList
             // 
             this.textBoxWordList.Location = new System.Drawing.Point(12, 72);
+            this.textBoxWordList.MaxLength = 10000000;
             this.textBoxWordList.Multiline = true;
             this.textBoxWordList.Name = "textBoxWordList";
             this.textBoxWordList.Size = new System.Drawing.Size(389, 247);
@@ -92,6 +93,7 @@
             this.buttonBack.TabIndex = 6;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // labelProgressBar
             // 
