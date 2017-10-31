@@ -25,8 +25,8 @@ namespace MemoOffVocabulary
 
         Point OrgThisSize,
               DifftabControlFormSize, DifftextBoxKeyword_sSize, DifftextBoxValueword_sSize, DifftextBoxKeyword_aSize, DifftextBoxValueword_aSize,
-              DiffcomboBoxDeckLocation, DiffbuttonGoodLocation, DiffbuttonEasyLocation, DiffbuttonAgainLocation, DiffbuttonAddLocation, DiffbuttonClearLocation,
-                                        DiffbuttonGoodSize, DiffbuttonEasySize, DiffbuttonAgainSize, DiffbuttonAddSize, DiffbuttonClearSize;
+              DiffcomboBoxDeckLocation, DiffcomboBoxParseSourceLocation, DiffbuttonGoodLocation, DiffbuttonEasyLocation, DiffbuttonAgainLocation, DiffbuttonAddLocation, DiffbuttonClearLocation,
+                                                                         DiffbuttonGoodSize, DiffbuttonEasySize, DiffbuttonAgainSize, DiffbuttonAddSize, DiffbuttonClearSize;
 
         private void MemoOffForm_Load(object sender, EventArgs e)
         {
@@ -42,6 +42,13 @@ namespace MemoOffVocabulary
         public MemoOffForm()
         {
             InitializeComponent();
+
+            comboBoxParseSource.Items.Add("None");
+            for (int i = 0; i < Translation.TransMappingTable.Count; i++)
+                comboBoxParseSource.Items.Add(Translation.TransMappingTable.Keys.ElementAt(i));
+
+            comboBoxParseSource.SelectedIndex = 0;
+            comboBoxParseSource.Visible = false;
 
             if (!Directory.Exists(Global.Deck_path))
                 Directory.CreateDirectory(Global.Deck_path);
@@ -73,6 +80,7 @@ namespace MemoOffVocabulary
             DifftextBoxValueword_aSize = new Point(this.Width - textBoxValueword_a.Width, this.Height - textBoxValueword_a.Height);
 
             DiffcomboBoxDeckLocation = new Point(this.Width - comboBoxDeck.Location.X, this.Height - comboBoxDeck.Location.Y);
+            DiffcomboBoxParseSourceLocation = new Point(this.Width - comboBoxParseSource.Location.X, this.Height - comboBoxParseSource.Location.Y);
             DiffbuttonGoodLocation = new Point(this.Width - buttonGood.Location.X, this.Height - buttonGood.Location.Y);
             DiffbuttonEasyLocation = new Point(this.Width - buttonEasy.Location.X, this.Height - buttonEasy.Location.Y);
             DiffbuttonAgainLocation = new Point(this.Width - buttonAgain.Location.X, this.Height - buttonAgain.Location.Y);
@@ -178,10 +186,29 @@ namespace MemoOffVocabulary
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            string Valueword = "";
+            if (comboBoxParseSource.Items[comboBoxParseSource.SelectedIndex].ToString() == "None")
+                Valueword = textBoxValueword_a.Text;
+            else
+            {
+                Translation.FuncOut<object, string> RunTrans = Translation.TransMappingTable[comboBoxParseSource.Items[comboBoxParseSource.SelectedIndex].ToString()];
+                if (!RunTrans(textBoxKeyword_a.Text, out Valueword))
+                {
+                    string ErrorMessage = "Error Translate " + textBoxKeyword_a.Text;
+                    EventLog.Write(ErrorMessage);
+                    MessageBox.Show(ErrorMessage);
+                    return;
+                }
+            }
 
-            if (!oMemoOffObject.AddCardToDeck(textBoxKeyword_a.Text, textBoxValueword_a.Text))
+
+            if (!oMemoOffObject.AddCardToDeck(textBoxKeyword_a.Text, Valueword))
+            {
+                string ErrorMessage = "Error Add " + textBoxKeyword_a.Text + "Card To Deck";
+                EventLog.Write(ErrorMessage);
+                MessageBox.Show(ErrorMessage);
                 return;
-
+            }
             string CardFile_Path = Global.Deck_path + oMemoOffObject.lDeckList[oMemoOffObject.CurrentDeckIndex] + "\\" + textBoxKeyword_a.Text + "_" + oMemoOffObject.TTS_speechtype + ".mp3";
             TTS.DownloadTTSThread(textBoxKeyword_a.Text, CardFile_Path, oMemoOffObject.TTS_speechtype);
 
@@ -193,12 +220,16 @@ namespace MemoOffVocabulary
         {
             if (tabControlForm.SelectedIndex == (int)tabcontrol1_page.tabPageStudy)
             {
+                comboBoxParseSource.Visible = false;
                 timer_study.Enabled = Global.EnableAutoStudy;
-                if (oMemoOffObject.CurrentDeck.Count>0 && textBoxKeyword_s.Text == "")
+                if (oMemoOffObject.CurrentDeck.Count > 0 && textBoxKeyword_s.Text == "")
                     DrawCard();
             }
             else
+            {
+                comboBoxParseSource.Visible = true;
                 timer_study.Enabled = false;
+            }
         }
 
         private void ToolStripMenuItemCreateDeck_Click(object sender, EventArgs e)
@@ -221,6 +252,19 @@ namespace MemoOffVocabulary
             UpdateComboBoxDeckList(comboBoxDeck.SelectedIndex);
             DrawCard();
             StartAllTimer();
+        }
+
+        private void comboBoxParseSource_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (comboBoxParseSource.Items[comboBoxParseSource.SelectedIndex] == "None")
+                textBoxValueword_a.Enabled = true;
+            else
+                textBoxValueword_a.Enabled = false;
+        }
+
+        private void comboBoxParseSource_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void webCrawlerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -339,6 +383,7 @@ namespace MemoOffVocabulary
                 if (this.Width >= OrgThisSize.X)
                 {
                     comboBoxDeck.Location = new Point(this.Width - DiffcomboBoxDeckLocation.X, comboBoxDeck.Location.Y);
+                    comboBoxParseSource.Location = new Point(this.Width - DiffcomboBoxParseSourceLocation.X, comboBoxParseSource.Location.Y);
                     buttonGood.Location = new Point(this.Width - DiffbuttonGoodLocation.X, this.Height - DiffbuttonGoodLocation.Y);
                     buttonEasy.Location = new Point(this.Width - DiffbuttonEasyLocation.X, this.Height - DiffbuttonEasyLocation.Y);
                     buttonAgain.Location = new Point(this.Width - DiffbuttonAgainLocation.X, this.Height - DiffbuttonAgainLocation.Y);

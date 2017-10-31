@@ -18,8 +18,8 @@ namespace MemoOffVocabulary
         public static Dictionary<string, FuncOut<object, string>> TransMappingTable = new Dictionary<string, FuncOut<object, string>>()
         {
             { "Yahoo Dict (EN->CHT)" , TransYahooDictENToCHT},
-            { "Google Trans (EN->CHT)" ,TransGoogleENToCHT},
-            { "Google Trans (CHT->JP)" ,TransGoogleCHTToJP}
+            //{ "Google Trans (EN->CHT)" ,TransGoogleENToCHT},
+            //{ "Google Trans (CHT->JP)" ,TransGoogleCHTToJP}
         };
 
         static string DFS(HtmlNode NavNode)

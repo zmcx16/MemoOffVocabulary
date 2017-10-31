@@ -47,9 +47,10 @@
             this.CreateDeckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ManageDeckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webCrawlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBoxDeck = new System.Windows.Forms.ComboBox();
             this.timer_study = new System.Windows.Forms.Timer(this.components);
-            this.webCrawlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBoxParseSource = new System.Windows.Forms.ComboBox();
             this.tabControlForm.SuspendLayout();
             this.tabPageStudy.SuspendLayout();
             this.tabPageAddCard.SuspendLayout();
@@ -206,23 +207,30 @@
             // CreateDeckToolStripMenuItem
             // 
             this.CreateDeckToolStripMenuItem.Name = "CreateDeckToolStripMenuItem";
-            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
+            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
             this.CreateDeckToolStripMenuItem.Text = "Create Deck";
             this.CreateDeckToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemCreateDeck_Click);
             // 
             // ManageDeckToolStripMenuItem
             // 
             this.ManageDeckToolStripMenuItem.Name = "ManageDeckToolStripMenuItem";
-            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
+            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
             this.ManageDeckToolStripMenuItem.Text = "Manage Deck";
             this.ManageDeckToolStripMenuItem.Click += new System.EventHandler(this.ManageDeckToolStripMenuItem_Click);
             // 
             // ParameterToolStripMenuItem
             // 
             this.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem";
-            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
+            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
             this.ParameterToolStripMenuItem.Text = "Parameter";
             this.ParameterToolStripMenuItem.Click += new System.EventHandler(this.ParameterToolStripMenuItem_Click);
+            // 
+            // webCrawlerToolStripMenuItem
+            // 
+            this.webCrawlerToolStripMenuItem.Name = "webCrawlerToolStripMenuItem";
+            this.webCrawlerToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.webCrawlerToolStripMenuItem.Text = "Web Crawler";
+            this.webCrawlerToolStripMenuItem.Click += new System.EventHandler(this.webCrawlerToolStripMenuItem_Click);
             // 
             // comboBoxDeck
             // 
@@ -238,18 +246,22 @@
             this.timer_study.Interval = 10000;
             this.timer_study.Tick += new System.EventHandler(this.timer_study_Tick);
             // 
-            // webCrawlerToolStripMenuItem
+            // comboBoxParseSource
             // 
-            this.webCrawlerToolStripMenuItem.Name = "webCrawlerToolStripMenuItem";
-            this.webCrawlerToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
-            this.webCrawlerToolStripMenuItem.Text = "Web Crawler";
-            this.webCrawlerToolStripMenuItem.Click += new System.EventHandler(this.webCrawlerToolStripMenuItem_Click);
+            this.comboBoxParseSource.FormattingEnabled = true;
+            this.comboBoxParseSource.Location = new System.Drawing.Point(192, 1);
+            this.comboBoxParseSource.Name = "comboBoxParseSource";
+            this.comboBoxParseSource.Size = new System.Drawing.Size(202, 24);
+            this.comboBoxParseSource.TabIndex = 3;
+            this.comboBoxParseSource.SelectedIndexChanged += new System.EventHandler(this.comboBoxParseSource_SelectedIndexChanged);
+            this.comboBoxParseSource.SelectionChangeCommitted += new System.EventHandler(this.comboBoxParseSource_SelectionChangeCommitted);
             // 
             // MemoOffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(616, 235);
+            this.Controls.Add(this.comboBoxParseSource);
             this.Controls.Add(this.comboBoxDeck);
             this.Controls.Add(this.tabControlForm);
             this.Controls.Add(this.menuStripForm);
@@ -296,6 +308,7 @@
         private System.Windows.Forms.ToolStripMenuItem ParameterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem webCrawlerToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBoxDeck;
+        private System.Windows.Forms.ComboBox comboBoxParseSource;
     }
 }
 
