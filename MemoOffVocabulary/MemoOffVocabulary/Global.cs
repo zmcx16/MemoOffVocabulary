@@ -10,6 +10,8 @@ namespace MemoOffVocabulary
 {
     class Global
     {
+        public static string ErrorMessage = ""; 
+
         public static KeyValuePair<string, string>[] TTS_SpeechType_MappingTable
                = { new KeyValuePair<string, string>("None", "None"),
                    new KeyValuePair<string, string>("EN_us", "English (United States)"), new KeyValuePair<string, string>("EN_uk", "English (United Kingdom)"), 

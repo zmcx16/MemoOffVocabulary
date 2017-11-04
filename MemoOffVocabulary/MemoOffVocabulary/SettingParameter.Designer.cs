@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingParameter));
             this.groupBoxStudy = new System.Windows.Forms.GroupBox();
             this.labelEasy = new System.Windows.Forms.Label();
             this.labelAgain = new System.Windows.Forms.Label();
@@ -251,6 +252,7 @@
             this.Controls.Add(this.groupBoxOthers);
             this.Controls.Add(this.groupBoxStudy);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingParameter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SettingParameter";

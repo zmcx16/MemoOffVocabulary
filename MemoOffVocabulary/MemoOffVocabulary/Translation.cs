@@ -45,7 +45,13 @@ namespace MemoOffVocabulary
             string downloadUrl = "https://tw.dictionary.search.yahoo.com/search?p="+ WebUtility.UrlEncode(keyword);
             MemoryStream RawMeanHTML = new MemoryStream();
             if (!WebCommon.WebClient_downloadData(ref RawMeanHTML, downloadUrl))
+            {
+                if (Global.ErrorMessage.IndexOf("(999) Unable to process request at this time -- error 999") != -1)
+                    Global.ErrorMessage = "IP Blocked";
+                else
+                    Global.ErrorMessage = "";
                 return false;
+            }
 
             HtmlDocument MeanHtmlDoc = new HtmlDocument();
             MeanHtmlDoc.Load(RawMeanHTML,Encoding.UTF8);

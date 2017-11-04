@@ -268,7 +268,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripForm;
             this.Name = "MemoOffForm";
-            this.Text = "MemoOffVocabulary Ver1.0 by zmcx16";
+            this.Text = "MemoOffVocabulary Ver1.1 by zmcx16";
             this.Activated += new System.EventHandler(this.MemoOffForm_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MemoOffForm_FormClosing);
             this.Load += new System.EventHandler(this.MemoOffForm_Load);

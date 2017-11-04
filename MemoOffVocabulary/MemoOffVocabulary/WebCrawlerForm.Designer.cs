@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebCrawlerForm));
             this.textBoxWordList = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.progressBarDownload = new System.Windows.Forms.ProgressBar();
@@ -138,6 +139,7 @@
             this.Controls.Add(this.comboBoxParseSource);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxWordList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WebCrawlerForm";
             this.Text = "WebCrawlerForm";
             this.ResumeLayout(false);

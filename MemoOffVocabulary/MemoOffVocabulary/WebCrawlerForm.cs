@@ -78,6 +78,13 @@ namespace MemoOffVocabulary
                     string ErrorMessage = "Error Translate " + DownloadList[0];
                     EventLog.Write(ErrorMessage);
                     ErrorCount++;
+
+                    if(Global.ErrorMessage == "IP Blocked")
+                    {
+                        MessageBox.Show("Your IP has been blocked, wait a moment to try download again!");
+                        Global.ErrorMessage = "";
+                        break;
+                    }
                 }
                 else if (!oMemoOffObject.AddCardToDeck(DownloadList[0], TransOutput))
                 {
@@ -95,7 +102,8 @@ namespace MemoOffVocabulary
             bDownloading = false;
             UpdateTextBoxWordList();
 
-            MessageBox.Show("Error Translate or Add " + ErrorCount + "word... please refer EventLog.");
+            if(ErrorCount>0)
+                MessageBox.Show("Error Translate or Add " + ErrorCount + " word... please refer EventLog.");
 
             SetControlEnable(true);
         }

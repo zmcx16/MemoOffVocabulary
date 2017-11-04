@@ -20,6 +20,7 @@ namespace MemoOffVocabulary
             }
             catch (Exception ex)
             {
+                Global.ErrorMessage = ex.ToString();
                 EventLog.Write(ex.ToString());
                 return false;
             }

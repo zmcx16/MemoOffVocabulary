@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageDeck));
             this.listBoxDeckList = new System.Windows.Forms.ListBox();
             this.contextMenuStripForListbox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,12 +48,12 @@
             this.listBoxDeckList.Font = new System.Drawing.Font("新細明體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.listBoxDeckList.FormattingEnabled = true;
             this.listBoxDeckList.HorizontalScrollbar = true;
-            this.listBoxDeckList.ItemHeight = 17;
-            this.listBoxDeckList.Location = new System.Drawing.Point(36, 39);
+            this.listBoxDeckList.ItemHeight = 18;
+            this.listBoxDeckList.Location = new System.Drawing.Point(40, 42);
             this.listBoxDeckList.Name = "listBoxDeckList";
             this.listBoxDeckList.ScrollAlwaysVisible = true;
             this.listBoxDeckList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxDeckList.Size = new System.Drawing.Size(176, 429);
+            this.listBoxDeckList.Size = new System.Drawing.Size(198, 454);
             this.listBoxDeckList.TabIndex = 0;
             this.listBoxDeckList.SelectedIndexChanged += new System.EventHandler(this.listBoxDeckList_SelectedIndexChanged);
             this.listBoxDeckList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBoxDeckList_KeyUp);
@@ -65,26 +66,26 @@
             this.RenameToolStripMenuItem,
             this.DeleteToolStripMenuItem});
             this.contextMenuStripForListbox.Name = "contextMenuStripForListbox";
-            this.contextMenuStripForListbox.Size = new System.Drawing.Size(136, 76);
+            this.contextMenuStripForListbox.Size = new System.Drawing.Size(141, 76);
             // 
             // AddStripMenuItem
             // 
             this.AddStripMenuItem.Name = "AddStripMenuItem";
-            this.AddStripMenuItem.Size = new System.Drawing.Size(135, 24);
+            this.AddStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.AddStripMenuItem.Text = "Add";
             this.AddStripMenuItem.Click += new System.EventHandler(this.AddStripMenuItem_Click);
             // 
             // RenameToolStripMenuItem
             // 
             this.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem";
-            this.RenameToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
+            this.RenameToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.RenameToolStripMenuItem.Text = "Rename";
             this.RenameToolStripMenuItem.Click += new System.EventHandler(this.RenameToolStripMenuItem_Click);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.DeleteToolStripMenuItem.Text = "Delete";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
@@ -94,12 +95,12 @@
             this.listBoxKeyWord.Font = new System.Drawing.Font("新細明體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.listBoxKeyWord.FormattingEnabled = true;
             this.listBoxKeyWord.HorizontalScrollbar = true;
-            this.listBoxKeyWord.ItemHeight = 17;
-            this.listBoxKeyWord.Location = new System.Drawing.Point(277, 39);
+            this.listBoxKeyWord.ItemHeight = 18;
+            this.listBoxKeyWord.Location = new System.Drawing.Point(312, 42);
             this.listBoxKeyWord.Name = "listBoxKeyWord";
             this.listBoxKeyWord.ScrollAlwaysVisible = true;
             this.listBoxKeyWord.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxKeyWord.Size = new System.Drawing.Size(216, 429);
+            this.listBoxKeyWord.Size = new System.Drawing.Size(242, 454);
             this.listBoxKeyWord.TabIndex = 1;
             this.listBoxKeyWord.SelectedIndexChanged += new System.EventHandler(this.listBoxKeyWord_SelectedIndexChanged);
             this.listBoxKeyWord.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBoxKeyWord_KeyUp);
@@ -107,18 +108,18 @@
             // textBoxValueWord
             // 
             this.textBoxValueWord.Font = new System.Drawing.Font("新細明體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBoxValueWord.Location = new System.Drawing.Point(550, 39);
+            this.textBoxValueWord.Location = new System.Drawing.Point(619, 42);
             this.textBoxValueWord.Multiline = true;
             this.textBoxValueWord.Name = "textBoxValueWord";
             this.textBoxValueWord.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxValueWord.Size = new System.Drawing.Size(371, 388);
+            this.textBoxValueWord.Size = new System.Drawing.Size(417, 414);
             this.textBoxValueWord.TabIndex = 2;
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(550, 435);
+            this.buttonSave.Location = new System.Drawing.Point(619, 464);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(119, 33);
+            this.buttonSave.Size = new System.Drawing.Size(134, 35);
             this.buttonSave.TabIndex = 3;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -126,9 +127,9 @@
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(802, 435);
+            this.buttonBack.Location = new System.Drawing.Point(902, 464);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(119, 33);
+            this.buttonBack.Size = new System.Drawing.Size(134, 35);
             this.buttonBack.TabIndex = 4;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
@@ -136,14 +137,15 @@
             // 
             // ManageDeck
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 511);
+            this.ClientSize = new System.Drawing.Size(1071, 545);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxValueWord);
             this.Controls.Add(this.listBoxKeyWord);
             this.Controls.Add(this.listBoxDeckList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManageDeck";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ManageDeck";
