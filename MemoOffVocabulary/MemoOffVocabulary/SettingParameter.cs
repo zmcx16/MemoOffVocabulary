@@ -38,6 +38,19 @@ namespace MemoOffVocabulary
                 comboBoxTTS_SpeechType.SelectedIndex = TTS_DecksSpeechType[comboBoxDeckList.SelectedIndex].Item2;
             }
 
+            this.groupBoxStudy.Text = Global.resources.GetString("Study", Global.culture_info);
+            this.labelEasy.Text = Global.resources.GetString("EasyDays", Global.culture_info);
+            this.labelAgain.Text = Global.resources.GetString("AgainMinutes", Global.culture_info);
+            this.labelGood.Text = Global.resources.GetString("GoodHours", Global.culture_info);
+            this.groupBoxOthers.Text = Global.resources.GetString("Others", Global.culture_info);
+            this.checkBoxEnableBringExeTop.Text = Global.resources.GetString("EnableMemoAlwaysOnTop", Global.culture_info);
+            this.checkBoxAutoStudy.Text = Global.resources.GetString("AutoStudysec", Global.culture_info);
+            this.buttonSave.Text = Global.resources.GetString("Save", Global.culture_info);
+            this.buttonCancel.Text = Global.resources.GetString("Cancel", Global.culture_info);
+            this.groupBoxTTS.Text = Global.resources.GetString("TextToSpeechTTS", Global.culture_info);
+            this.labelTTS.Text = Global.resources.GetString("EnableGoogleTextToSpeech", Global.culture_info);
+            this.Text = Global.resources.GetString("SettingParameter", Global.culture_info);
+
         }
 
         public void ReadDeckListTocomboBoxDeckList()

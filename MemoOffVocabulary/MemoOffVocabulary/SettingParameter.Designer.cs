@@ -201,7 +201,7 @@
             this.groupBoxTTS.Size = new System.Drawing.Size(304, 236);
             this.groupBoxTTS.TabIndex = 9;
             this.groupBoxTTS.TabStop = false;
-            this.groupBoxTTS.Text = "Text-To-Speech(TTS)";
+            this.groupBoxTTS.Text = "Text-To-Speech (TTS)";
             // 
             // labelTTS
             // 
@@ -255,7 +255,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingParameter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "SettingParameter";
+            this.Text = "Setting Parameter";
             this.Load += new System.EventHandler(this.SettingParameter_Load);
             this.groupBoxStudy.ResumeLayout(false);
             this.groupBoxStudy.PerformLayout();

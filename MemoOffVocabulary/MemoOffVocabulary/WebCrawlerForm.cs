@@ -35,6 +35,13 @@ namespace MemoOffVocabulary
                 comboBoxParseSource.Items.Add(Translation.TransMappingTable.Keys.ElementAt(i));
 
             comboBoxParseSource.SelectedIndex = 0;
+
+            this.label1.Text = Global.resources.GetString("SelectDeckSourceAndInputNewCardList", Global.culture_info);
+            this.buttonDownload.Text = Global.resources.GetString("Download", Global.culture_info);
+            this.buttonStop.Text = Global.resources.GetString("Stop", Global.culture_info);
+            this.buttonBack.Text = Global.resources.GetString("Back", Global.culture_info);
+            this.Text = Global.resources.GetString("WebCrawler", Global.culture_info);
+
         }
         private void LoadDeckList()
         {

@@ -118,135 +118,135 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Add</value>
+    <value>加入</value>
   </data>
   <data name="AddCard" xml:space="preserve">
-    <value>Add Card</value>
+    <value>加入字卡</value>
   </data>
   <data name="Again" xml:space="preserve">
-    <value>Again</value>
+    <value>再學一次</value>
   </data>
   <data name="AgainMinutes" xml:space="preserve">
-    <value>Again (Minutes):</value>
+    <value>再學一次 (分):</value>
   </data>
   <data name="AreYouSureYouWantToDeleteTheseCards" xml:space="preserve">
-    <value>Are you sure you want to delete these cards?</value>
+    <value>確定刪除字卡?</value>
   </data>
   <data name="AreYouSureYouWantToDeleteTheseDecks" xml:space="preserve">
-    <value>Are you sure you want to delete these decks?</value>
+    <value>確定刪除牌組?</value>
   </data>
   <data name="AutoStudysec" xml:space="preserve">
-    <value>Auto Study (sec):</value>
+    <value>自動學習 (秒):</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>結束</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="Clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>清除</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>創建</value>
   </data>
   <data name="CreateDeck" xml:space="preserve">
-    <value>Create Deck</value>
+    <value>新建牌組</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>刪除</value>
   </data>
   <data name="Download" xml:space="preserve">
-    <value>Download</value>
+    <value>下載</value>
   </data>
   <data name="Easy" xml:space="preserve">
-    <value>Easy</value>
+    <value>簡單</value>
   </data>
   <data name="EasyDays" xml:space="preserve">
-    <value>Easy (Days):</value>
+    <value>簡單 (日):</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>編輯</value>
   </data>
   <data name="EditDeck" xml:space="preserve">
-    <value>Edit Deck</value>
+    <value>編輯牌組</value>
   </data>
   <data name="EnableGoogleTextToSpeech" xml:space="preserve">
-    <value>Enable Google Text-To-Speech</value>
+    <value>開啟語音合成</value>
   </data>
   <data name="EnableMemoAlwaysOnTop" xml:space="preserve">
-    <value>Enable Memo Always On Top</value>
+    <value>強制程式位於最前方</value>
   </data>
   <data name="EnglishUnitedKingdom" xml:space="preserve">
-    <value>English (United Kingdom)</value>
+    <value>英文 (英國)</value>
   </data>
   <data name="EnglishUnitedStates" xml:space="preserve">
-    <value>English (United States)</value>
+    <value>英文 (美國)</value>
   </data>
   <data name="Good" xml:space="preserve">
-    <value>Good</value>
+    <value>有印象</value>
   </data>
   <data name="GoodHours" xml:space="preserve">
-    <value>Good (Hours):</value>
+    <value>有印象 (時):</value>
   </data>
   <data name="Japanese" xml:space="preserve">
-    <value>Japanese</value>
+    <value>日本</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>語系</value>
   </data>
   <data name="ManageDeck" xml:space="preserve">
-    <value>Manage Deck</value>
+    <value>管理牌組</value>
   </data>
   <data name="None" xml:space="preserve">
-    <value>None</value>
+    <value>無</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>Others</value>
+    <value>其他</value>
   </data>
   <data name="Parameter" xml:space="preserve">
-    <value>Parameter</value>
+    <value>參數</value>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>Rename</value>
+    <value>重命名</value>
   </data>
   <data name="RenameCard" xml:space="preserve">
-    <value>Rename Card</value>
+    <value>重命名字卡</value>
   </data>
   <data name="RenameDeck" xml:space="preserve">
-    <value>Rename Deck</value>
+    <value>重命名牌組</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>儲存</value>
   </data>
   <data name="SelectDeckSourceAndInputNewCardList" xml:space="preserve">
-    <value>Select Deck, Source and Input New Card List:</value>
+    <value>選擇牌組, 輸入字卡清單:</value>
   </data>
   <data name="Setting" xml:space="preserve">
-    <value>Setting</value>
+    <value>設置</value>
   </data>
   <data name="SettingParameter" xml:space="preserve">
-    <value>Setting Parameter</value>
+    <value>設置參數</value>
   </data>
   <data name="Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>停止</value>
   </data>
   <data name="Study" xml:space="preserve">
-    <value>Study</value>
+    <value>學習</value>
   </data>
   <data name="TextToSpeechTTS" xml:space="preserve">
-    <value>Text-To-Speech (TTS)</value>
+    <value>語音合成 (TTS)</value>
   </data>
   <data name="TraditionalChinese" xml:space="preserve">
-    <value>Traditional Chinese</value>
+    <value>繁體中文</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Warning!!</value>
+    <value>注意!!</value>
   </data>
   <data name="WebCrawler" xml:space="preserve">
-    <value>Web Crawler</value>
+    <value>下載翻譯</value>
   </data>
   <data name="YahooDictEN_CHT" xml:space="preserve">
-    <value>Yahoo Dict (EN-&gt;CHT)</value>
+    <value>Yahoo字典(英-&gt;中)</value>
   </data>
 </root>

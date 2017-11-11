@@ -32,6 +32,13 @@ namespace MemoOffVocabulary
             UpdatelistBoxDeckList();
 
             IsInitial_completed = true;
+
+            this.AddStripMenuItem.Text = Global.resources.GetString("Add", Global.culture_info);
+            this.RenameToolStripMenuItem.Text = Global.resources.GetString("Rename", Global.culture_info);
+            this.DeleteToolStripMenuItem.Text = Global.resources.GetString("Delete", Global.culture_info);
+            this.buttonSave.Text = Global.resources.GetString("Save", Global.culture_info);
+            this.buttonBack.Text = Global.resources.GetString("Back", Global.culture_info);
+            this.Text = Global.resources.GetString("ManageDeck", Global.culture_info);
         }
 
         public void SaveControlsLocationSize()
@@ -145,7 +152,7 @@ namespace MemoOffVocabulary
             if (((ContextMenuStrip)tsmi.Owner).SourceControl.Name == listBoxDeckList.Name)
             {
                 StringBuilder NewDeck = new StringBuilder();
-                EditForm ef_d = new EditForm(NewDeck,"", "Create", "Cancel", "Create Deck");
+                EditForm ef_d = new EditForm(NewDeck,"", Global.resources.GetString("Create", Global.culture_info), Global.resources.GetString("Cancel", Global.culture_info), Global.resources.GetString("CreateDeck", Global.culture_info));
                 ef_d.ShowDialog();
                 if (NewDeck.ToString() == "")
                     return;
@@ -168,7 +175,7 @@ namespace MemoOffVocabulary
             {
                 long new_key = oMemoOffObject.HandleCollisionKey(long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")));
                 StringBuilder NewCard = new StringBuilder();
-                EditForm ef_c = new EditForm(NewCard,"", "Add", "Cancel", "Add Card");
+                EditForm ef_c = new EditForm(NewCard,"", Global.resources.GetString("Add", Global.culture_info), Global.resources.GetString("Cancel", Global.culture_info), Global.resources.GetString("AddCard", Global.culture_info));
                 ef_c.ShowDialog();
                 if (NewCard.ToString() == "")
                     return;
@@ -192,7 +199,7 @@ namespace MemoOffVocabulary
                 if (listBoxDeckList.SelectedIndex >= oMemoOffObject.lDeckList.Count || listBoxDeckList.SelectedIndex < 0)
                     return;
                 StringBuilder sRenameDeck = new StringBuilder();
-                EditForm ef_d = new EditForm(sRenameDeck, oMemoOffObject.lDeckList[listBoxDeckList.SelectedIndex], "Rename", "Cancel", "Rename Deck");
+                EditForm ef_d = new EditForm(sRenameDeck, oMemoOffObject.lDeckList[listBoxDeckList.SelectedIndex], Global.resources.GetString("Rename", Global.culture_info), Global.resources.GetString("Cancel", Global.culture_info), Global.resources.GetString("RenameDeck", Global.culture_info));
                 ef_d.ShowDialog();
                 if (sRenameDeck.ToString() == "")
                     return;
@@ -218,7 +225,7 @@ namespace MemoOffVocabulary
                 if (listBoxKeyWord.SelectedIndex >= MappingTableValueToKey.Count || listBoxKeyWord.SelectedIndex < 0)
                     return;
                 StringBuilder RenameCard = new StringBuilder();
-                EditForm ef_c = new EditForm(RenameCard, oMemoOffObject.CurrentDeck[MappingTableValueToKey[listBoxKeyWord.SelectedIndex].Value].keyword, "Rename", "Cancel", "Rename Card");
+                EditForm ef_c = new EditForm(RenameCard, oMemoOffObject.CurrentDeck[MappingTableValueToKey[listBoxKeyWord.SelectedIndex].Value].keyword, Global.resources.GetString("Rename", Global.culture_info), Global.resources.GetString("Cancel", Global.culture_info), Global.resources.GetString("RenameCard", Global.culture_info));
                 ef_c.ShowDialog();
                 if (RenameCard.ToString() == "")
                     return;
@@ -239,7 +246,7 @@ namespace MemoOffVocabulary
                 if (listBoxDeckList.SelectedItems.Count == 0)
                     return;
 
-                DialogResult DialogDeleteDeck = MessageBox.Show("Are you sure you want to delete these decks?", "Warning!!", MessageBoxButtons.YesNo);
+                DialogResult DialogDeleteDeck = MessageBox.Show(Global.resources.GetString("AreYouSureYouWantToDeleteTheseDecks", Global.culture_info), Global.resources.GetString("Warning", Global.culture_info), MessageBoxButtons.YesNo);
                 if (DialogDeleteDeck == DialogResult.Yes)
                 {
                     for (int i = listBoxDeckList.SelectedItems.Count - 1; i >= 0; i--)
@@ -258,7 +265,7 @@ namespace MemoOffVocabulary
                 if (listBoxKeyWord.SelectedItems.Count == 0)
                     return;
 
-                DialogResult DialogDeleteCard = MessageBox.Show("Are you sure you want to delete these cards?", "Warning!!", MessageBoxButtons.YesNo);
+                DialogResult DialogDeleteCard = MessageBox.Show(Global.resources.GetString("AreYouSureYouWantToDeleteTheseCards", Global.culture_info), Global.resources.GetString("Warning", Global.culture_info), MessageBoxButtons.YesNo);
                 if (DialogDeleteCard == DialogResult.Yes)
                 {
                     for (int i = listBoxKeyWord.SelectedItems.Count - 1; i >= 0; i--)

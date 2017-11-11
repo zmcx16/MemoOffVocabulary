@@ -14,6 +14,9 @@ namespace MemoOffVocabulary
         [STAThread]
         static void Main()
         {
+            Global.ReadSettingToIni();
+            Global.SettingMappingTableLang();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MemoOffForm());

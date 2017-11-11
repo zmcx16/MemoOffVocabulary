@@ -17,7 +17,7 @@ namespace MemoOffVocabulary
 
         public static Dictionary<string, FuncOut<object, string>> TransMappingTable = new Dictionary<string, FuncOut<object, string>>()
         {
-            { "Yahoo Dict (EN->CHT)" , TransYahooDictENToCHT},
+            { Global.resources.GetString("YahooDictEN_CHT", Global.culture_info) , TransYahooDictENToCHT},
             //{ "Google Trans (EN->CHT)" ,TransGoogleENToCHT},
             //{ "Google Trans (CHT->JP)" ,TransGoogleCHTToJP}
         };

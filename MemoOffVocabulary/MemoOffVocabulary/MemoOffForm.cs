@@ -39,6 +39,28 @@ namespace MemoOffVocabulary
             timer_study.Enabled = Global.EnableAutoStudy;
         }
 
+        public void ResettingLanguage()
+        {
+            this.tabPageStudy.Text = Global.resources.GetString("Study", Global.culture_info);
+            this.buttonEasy.Text = Global.resources.GetString("Easy", Global.culture_info);
+            this.buttonGood.Text = Global.resources.GetString("Good", Global.culture_info);
+            this.buttonAgain.Text = Global.resources.GetString("Again", Global.culture_info);
+            this.tabPageAddCard.Text = Global.resources.GetString("AddCard", Global.culture_info);
+            this.buttonClear.Text = Global.resources.GetString("Clear", Global.culture_info);
+            this.buttonAdd.Text = Global.resources.GetString("Add", Global.culture_info);
+            this.settingToolStripMenuItem.Text = Global.resources.GetString("Setting", Global.culture_info);
+            this.CreateDeckToolStripMenuItem.Text = Global.resources.GetString("CreateDeck", Global.culture_info);
+            this.ManageDeckToolStripMenuItem.Text = Global.resources.GetString("ManageDeck", Global.culture_info);
+            this.ParameterToolStripMenuItem.Text = Global.resources.GetString("Parameter", Global.culture_info);
+            this.webCrawlerToolStripMenuItem.Text = Global.resources.GetString("WebCrawler", Global.culture_info);
+            this.languageToolStripMenuItem.Text = Global.resources.GetString("Language", Global.culture_info);
+
+
+            comboBoxParseSource.Items[0] = Global.resources.GetString("None", Global.culture_info);
+            for (int i = 1; i < Translation.TransMappingTable.Count; i++)
+                comboBoxParseSource.Items[i] = Global.resources.GetString(Translation.TransMappingTable.Keys.ElementAt(i), Global.culture_info);
+        }
+
         public MemoOffForm()
         {
             InitializeComponent();
@@ -53,8 +75,6 @@ namespace MemoOffVocabulary
             if (!Directory.Exists(Global.Deck_path))
                 Directory.CreateDirectory(Global.Deck_path);
 
-            Global.ReadSettingToIni();
-
             oMemoOffObject = new MemoOffObject();
             UpdateComboBoxDeckList(0);
             DrawCard();
@@ -67,6 +87,7 @@ namespace MemoOffVocabulary
             IsInitial_completed = true;
             SaveControlsLocationSize();
 
+            ResettingLanguage();
         }
 
         public void SaveControlsLocationSize()
@@ -238,7 +259,7 @@ namespace MemoOffVocabulary
             StringBuilder NewDeck = new StringBuilder();
 
             SetProcessBottom();
-            EditForm ef = new EditForm(NewDeck, "", "Create", "Cancel", "Create Deck");
+            EditForm ef = new EditForm(NewDeck, "", Global.resources.GetString("Create", Global.culture_info), Global.resources.GetString("Cancel", Global.culture_info), Global.resources.GetString("CreateDeck", Global.culture_info));
             ef.ShowDialog();
             if (Global.EnableBringExeTop)
                 SetProcessTopMost();
@@ -256,7 +277,7 @@ namespace MemoOffVocabulary
 
         private void comboBoxParseSource_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (comboBoxParseSource.Items[comboBoxParseSource.SelectedIndex] == "None")
+            if (comboBoxParseSource.Items[comboBoxParseSource.SelectedIndex].ToString() == Global.resources.GetString("None", Global.culture_info))
                 textBoxValueword_a.Enabled = true;
             else
                 textBoxValueword_a.Enabled = false;
@@ -265,6 +286,18 @@ namespace MemoOffVocabulary
         private void comboBoxParseSource_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Global.SettingLang("en-US");
+            ResettingLanguage();
+        }
+
+        private void tradChineseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Global.SettingLang("zh-TW");
+            ResettingLanguage();
         }
 
         private void webCrawlerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -379,11 +412,11 @@ namespace MemoOffVocabulary
                 textBoxValueword_s.Width = this.Width - DifftextBoxValueword_sSize.X; textBoxValueword_s.Height = this.Height - DifftextBoxValueword_sSize.Y;
                 textBoxKeyword_a.Width = this.Width - DifftextBoxKeyword_aSize.X; textBoxKeyword_a.Height = this.Height - DifftextBoxKeyword_aSize.Y;
                 textBoxValueword_a.Width = this.Width - DifftextBoxValueword_aSize.X; textBoxValueword_a.Height = this.Height - DifftextBoxValueword_aSize.Y;
+                comboBoxDeck.Location = new Point(this.Width - DiffcomboBoxDeckLocation.X, comboBoxDeck.Location.Y);
+                comboBoxParseSource.Location = new Point(this.Width - DiffcomboBoxParseSourceLocation.X, comboBoxParseSource.Location.Y);
 
                 if (this.Width >= OrgThisSize.X)
                 {
-                    comboBoxDeck.Location = new Point(this.Width - DiffcomboBoxDeckLocation.X, comboBoxDeck.Location.Y);
-                    comboBoxParseSource.Location = new Point(this.Width - DiffcomboBoxParseSourceLocation.X, comboBoxParseSource.Location.Y);
                     buttonGood.Location = new Point(this.Width - DiffbuttonGoodLocation.X, this.Height - DiffbuttonGoodLocation.Y);
                     buttonEasy.Location = new Point(this.Width - DiffbuttonEasyLocation.X, this.Height - DiffbuttonEasyLocation.Y);
                     buttonAgain.Location = new Point(this.Width - DiffbuttonAgainLocation.X, this.Height - DiffbuttonAgainLocation.Y);

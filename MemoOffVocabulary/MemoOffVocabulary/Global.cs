@@ -5,17 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.IO;
+using System.Resources;
+using System.Globalization;
 
 namespace MemoOffVocabulary
 {
     class Global
     {
-        public static string ErrorMessage = ""; 
+        public static ResourceManager resources = new ResourceManager(typeof(Properties.Resources));
+        public static CultureInfo culture_info = CultureInfo.CreateSpecificCulture("en-US");
 
-        public static KeyValuePair<string, string>[] TTS_SpeechType_MappingTable
-               = { new KeyValuePair<string, string>("None", "None"),
-                   new KeyValuePair<string, string>("EN_us", "English (United States)"), new KeyValuePair<string, string>("EN_uk", "English (United Kingdom)"), 
-                   new KeyValuePair<string, string>("ja", "Japanese"),new KeyValuePair<string, string>("zh_TW", "Traditional Chinese")};
+        public static string ErrorMessage = "";
+
+        public static KeyValuePair<string, string>[] TTS_SpeechType_MappingTable = { new KeyValuePair<string, string>("None", Global.resources.GetString("None", Global.culture_info)) ,
+                                                                                     new KeyValuePair<string, string>("EN_us", Global.resources.GetString("EnglishUnitedStates", Global.culture_info)),
+                                                                                     new KeyValuePair<string, string>("EN_uk", Global.resources.GetString("EnglishUnitedKingdom", Global.culture_info)),
+                                                                                     new KeyValuePair<string, string>("ja", Global.resources.GetString("Japanese", Global.culture_info)),
+                                                                                     new KeyValuePair<string, string>("zh_TW", Global.resources.GetString("TraditionalChinese", Global.culture_info)) };
 
         public static string Deck_path = Directory.GetCurrentDirectory() + "\\Deck\\";
         public static int StudyAgainInterval = 1, StudyGoodInterval = 1, StudyEasyInterval = 1;
@@ -23,6 +29,15 @@ namespace MemoOffVocabulary
         public static bool EnableBringExeTop = true;
         public static bool EnableAutoStudy = true;
         public static int SoundVolume = 50;
+
+        public static void SettingMappingTableLang()
+        {
+            TTS_SpeechType_MappingTable[0] = new KeyValuePair<string, string>("None", Global.resources.GetString("None", Global.culture_info));
+            TTS_SpeechType_MappingTable[1] = new KeyValuePair<string, string>("EN_us", Global.resources.GetString("EnglishUnitedStates", Global.culture_info));
+            TTS_SpeechType_MappingTable[2] = new KeyValuePair<string, string>("EN_uk", Global.resources.GetString("EnglishUnitedKingdom", Global.culture_info));
+            TTS_SpeechType_MappingTable[3] = new KeyValuePair<string, string>("ja", Global.resources.GetString("Japanese", Global.culture_info));
+            TTS_SpeechType_MappingTable[4] = new KeyValuePair<string, string>("zh_TW", Global.resources.GetString("TraditionalChinese", Global.culture_info));
+        }
 
         public static void WriteSettingToIni()
         {
@@ -33,6 +48,13 @@ namespace MemoOffVocabulary
             win32API.WritePrivateProfileString("Setting", "EnableBringExeTop", Global.EnableBringExeTop.ToString(), Global.Deck_path + "setting.ini");
             win32API.WritePrivateProfileString("Setting", "EnableAutoStudy", Global.EnableAutoStudy.ToString(), Global.Deck_path + "setting.ini");
             win32API.WritePrivateProfileString("Setting", "SoundVolume", Global.SoundVolume.ToString(), Global.Deck_path + "setting.ini");
+            win32API.WritePrivateProfileString("Setting", "Lang", Global.culture_info.Name, Global.Deck_path + "setting.ini");
+        }
+
+        public static void SettingLang(string lang)
+        {
+            culture_info = CultureInfo.CreateSpecificCulture(lang);
+            win32API.WritePrivateProfileString("Setting", "Lang", Global.culture_info.Name, Global.Deck_path + "setting.ini");
         }
 
         public static void ReadSettingToIni()
@@ -54,11 +76,13 @@ namespace MemoOffVocabulary
                 EnableAutoStudy = bool.Parse(temp.ToString());
                 win32API.GetPrivateProfileString("Setting", "SoundVolume", SoundVolume.ToString(), ref temp, Global.Deck_path + "setting.ini");
                 SoundVolume = int.Parse(temp.ToString());
+                win32API.GetPrivateProfileString("Setting", "Lang", Global.culture_info.Name, ref temp, Global.Deck_path + "setting.ini");
+                culture_info = CultureInfo.CreateSpecificCulture(temp.ToString());
             }
             catch (Exception ex)
             {
                 WriteSettingToIni();    //Read fail, write default setting
-                EventLog.Write("Read setting to ini fail, write default setting");
+                EventLog.Write(Global.resources.GetString("ReadSettingToIniFailWriteDefaultSetting", Global.culture_info));
             }
         }
     }

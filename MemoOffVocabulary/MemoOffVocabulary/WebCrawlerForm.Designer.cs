@@ -57,7 +57,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(329, 18);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Select Deck, Source and Input New Card List:";
+            this.label1.Text = Global.resources.GetString("SelectDeckSourceAndInputNewCardList", Global.culture_info);
             // 
             // progressBarDownload
             // 
@@ -72,7 +72,7 @@
             this.buttonDownload.Name = "buttonDownload";
             this.buttonDownload.Size = new System.Drawing.Size(119, 30);
             this.buttonDownload.TabIndex = 4;
-            this.buttonDownload.Text = "Download";
+            this.buttonDownload.Text = Global.resources.GetString("Download", Global.culture_info);
             this.buttonDownload.UseVisualStyleBackColor = true;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
@@ -82,7 +82,7 @@
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(119, 30);
             this.buttonStop.TabIndex = 5;
-            this.buttonStop.Text = "Stop";
+            this.buttonStop.Text = Global.resources.GetString("Stop", Global.culture_info);
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
@@ -92,7 +92,7 @@
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(119, 30);
             this.buttonBack.TabIndex = 6;
-            this.buttonBack.Text = "Back";
+            this.buttonBack.Text = Global.resources.GetString("Back", Global.culture_info);
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
@@ -141,7 +141,7 @@
             this.Controls.Add(this.textBoxWordList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WebCrawlerForm";
-            this.Text = "WebCrawlerForm";
+            this.Text = Global.resources.GetString("WebCrawler", Global.culture_info);
             this.ResumeLayout(false);
             this.PerformLayout();
 

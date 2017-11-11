@@ -1,4 +1,5 @@
-﻿namespace MemoOffVocabulary
+﻿
+namespace MemoOffVocabulary
 {
     partial class ManageDeck
     {
@@ -72,7 +73,7 @@
             // 
             this.AddStripMenuItem.Name = "AddStripMenuItem";
             this.AddStripMenuItem.Size = new System.Drawing.Size(140, 24);
-            this.AddStripMenuItem.Text = "Add";
+            this.AddStripMenuItem.Text = "Setting";
             this.AddStripMenuItem.Click += new System.EventHandler(this.AddStripMenuItem_Click);
             // 
             // RenameToolStripMenuItem
@@ -148,7 +149,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManageDeck";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ManageDeck";
+            this.Text = "Manage Deck";
             this.Load += new System.EventHandler(this.ManageDeck_Load);
             this.Resize += new System.EventHandler(this.ManageDeck_Resize);
             this.contextMenuStripForListbox.ResumeLayout(false);

@@ -21,6 +21,7 @@ namespace MemoOffVocabulary
             this.Text = FormText;
             this.EditText.Text = InputEditText;
             this.EditValue = OutputEditValue;
+
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
