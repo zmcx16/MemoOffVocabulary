@@ -48,12 +48,12 @@
             this.ManageDeckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.webCrawlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBoxDeck = new System.Windows.Forms.ComboBox();
-            this.timer_study = new System.Windows.Forms.Timer(this.components);
-            this.comboBoxParseSource = new System.Windows.Forms.ComboBox();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tradChineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBoxDeck = new System.Windows.Forms.ComboBox();
+            this.timer_study = new System.Windows.Forms.Timer(this.components);
+            this.comboBoxParseSource = new System.Windows.Forms.ComboBox();
             this.tabControlForm.SuspendLayout();
             this.tabPageStudy.SuspendLayout();
             this.tabPageAddCard.SuspendLayout();
@@ -192,7 +192,7 @@
             this.settingToolStripMenuItem});
             this.menuStripForm.Location = new System.Drawing.Point(0, 0);
             this.menuStripForm.Name = "menuStripForm";
-            this.menuStripForm.Size = new System.Drawing.Size(616, 30);
+            this.menuStripForm.Size = new System.Drawing.Size(616, 28);
             this.menuStripForm.TabIndex = 1;
             this.menuStripForm.Text = "menuStrip1";
             // 
@@ -205,36 +205,59 @@
             this.webCrawlerToolStripMenuItem,
             this.languageToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(75, 26);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
             this.settingToolStripMenuItem.Text = "Setting";
             // 
             // CreateDeckToolStripMenuItem
             // 
             this.CreateDeckToolStripMenuItem.Name = "CreateDeckToolStripMenuItem";
-            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
+            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
             this.CreateDeckToolStripMenuItem.Text = "Create Deck";
             this.CreateDeckToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemCreateDeck_Click);
             // 
             // ManageDeckToolStripMenuItem
             // 
             this.ManageDeckToolStripMenuItem.Name = "ManageDeckToolStripMenuItem";
-            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
+            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
             this.ManageDeckToolStripMenuItem.Text = "Manage Deck";
             this.ManageDeckToolStripMenuItem.Click += new System.EventHandler(this.ManageDeckToolStripMenuItem_Click);
             // 
             // ParameterToolStripMenuItem
             // 
             this.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem";
-            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
+            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
             this.ParameterToolStripMenuItem.Text = "Parameter";
             this.ParameterToolStripMenuItem.Click += new System.EventHandler(this.ParameterToolStripMenuItem_Click);
             // 
             // webCrawlerToolStripMenuItem
             // 
             this.webCrawlerToolStripMenuItem.Name = "webCrawlerToolStripMenuItem";
-            this.webCrawlerToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
+            this.webCrawlerToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
             this.webCrawlerToolStripMenuItem.Text = "Web Crawler";
             this.webCrawlerToolStripMenuItem.Click += new System.EventHandler(this.webCrawlerToolStripMenuItem_Click);
+            // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishToolStripMenuItem,
+            this.tradChineseToolStripMenuItem});
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.languageToolStripMenuItem.Text = "Language";
+            // 
+            // englishToolStripMenuItem
+            // 
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
+            this.englishToolStripMenuItem.Text = "English";
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            // 
+            // tradChineseToolStripMenuItem
+            // 
+            this.tradChineseToolStripMenuItem.Name = "tradChineseToolStripMenuItem";
+            this.tradChineseToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
+            this.tradChineseToolStripMenuItem.Text = "繁體中文";
+            this.tradChineseToolStripMenuItem.Click += new System.EventHandler(this.tradChineseToolStripMenuItem_Click);
             // 
             // comboBoxDeck
             // 
@@ -260,29 +283,6 @@
             this.comboBoxParseSource.SelectedIndexChanged += new System.EventHandler(this.comboBoxParseSource_SelectedIndexChanged);
             this.comboBoxParseSource.SelectionChangeCommitted += new System.EventHandler(this.comboBoxParseSource_SelectionChangeCommitted);
             // 
-            // languageToolStripMenuItem
-            // 
-            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.englishToolStripMenuItem,
-            this.tradChineseToolStripMenuItem});
-            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
-            this.languageToolStripMenuItem.Text = "Language";
-            // 
-            // englishToolStripMenuItem
-            // 
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
-            this.englishToolStripMenuItem.Text = "English";
-            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
-            // 
-            // tradChineseToolStripMenuItem
-            // 
-            this.tradChineseToolStripMenuItem.Name = "tradChineseToolStripMenuItem";
-            this.tradChineseToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
-            this.tradChineseToolStripMenuItem.Text = "繁體中文";
-            this.tradChineseToolStripMenuItem.Click += new System.EventHandler(this.tradChineseToolStripMenuItem_Click);
-            // 
             // MemoOffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -295,7 +295,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripForm;
             this.Name = "MemoOffForm";
-            this.Text = "MemoOffVocabulary Ver1.1 by zmcx16";
+            this.Text = "MemoOffVocabulary Ver1.2 by zmcx16";
             this.Activated += new System.EventHandler(this.MemoOffForm_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MemoOffForm_FormClosing);
             this.Load += new System.EventHandler(this.MemoOffForm_Load);
