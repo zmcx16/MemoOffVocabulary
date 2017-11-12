@@ -6,6 +6,7 @@
 3.	Automatic study vocabulary card.
 4.	Automatic download & play sound --- using Google Text-To-Speech (TTS)
 5.	Automatic download word interpretation from online dictionary.
+6.	Support Language: en-US, zh-TW
 
 # Demo
 
