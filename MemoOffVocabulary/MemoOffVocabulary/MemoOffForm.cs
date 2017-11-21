@@ -233,8 +233,16 @@ namespace MemoOffVocabulary
             string CardFile_Path = Global.Deck_path + oMemoOffObject.lDeckList[oMemoOffObject.CurrentDeckIndex] + "\\" + textBoxKeyword_a.Text + "_" + oMemoOffObject.TTS_speechtype + ".mp3";
             TTS.DownloadTTSThread(textBoxKeyword_a.Text, CardFile_Path, oMemoOffObject.TTS_speechtype);
 
-            textBoxKeyword_a.Text = "";
-            textBoxValueword_a.Text = "";
+            if (comboBoxParseSource.Items[comboBoxParseSource.SelectedIndex].ToString() == "None")
+            {
+                textBoxKeyword_a.Text = "";
+                textBoxValueword_a.Text = "";
+            }
+            else
+            {
+                textBoxValueword_a.Text = textBoxKeyword_a.Text + ":\r\n" + Valueword;
+                textBoxKeyword_a.Text = "";
+            }
         }
 
         private void tabControlForm_SelectedIndexChanged(object sender, EventArgs e)
@@ -281,6 +289,8 @@ namespace MemoOffVocabulary
                 textBoxValueword_a.Enabled = true;
             else
                 textBoxValueword_a.Enabled = false;
+
+            textBoxValueword_a.Text = "";
         }
 
         private void comboBoxParseSource_SelectedIndexChanged(object sender, EventArgs e)
