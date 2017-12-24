@@ -1,5 +1,5 @@
 # MemoOffVocabulary
-
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/zmcx16/MemoOffVocabulary?branch=master&svg=true)](https://ci.appveyor.com/project/zmcx16/memooffvocabulary)
 # Features
 1.	Force program window on top most.
 2.	Support short, medium, long term study function.
