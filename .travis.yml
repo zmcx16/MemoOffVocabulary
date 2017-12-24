@@ -1,7 +1,0 @@
-language: csharp
-solution: MemoOffVocabulary/MemoOffVocabulary.sln
-#after_success:
-#    - coveralls
-notifications:
-    email:
-        - zmcx16@gmail.com
