@@ -1,6 +1,6 @@
 version: 1.0.{build}
 before_build:
-- cmd: nuget restore MemoOffVocabulary.sln
+- cmd: nuget restore MemoOffVocabulary\MemoOffVocabulary.sln
 build:
   project: MemoOffVocabulary\MemoOffVocabulary.sln
   verbosity: minimal
