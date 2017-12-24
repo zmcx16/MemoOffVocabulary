@@ -1,0 +1,12 @@
+language: csharp
+solution: MemoOffVocabulary.sln
+matrix:
+  include:
+    - dotnet: 1.1.5
+      mono: none
+    - mono: latest
+#after_success:
+#    - coveralls
+notifications:
+    email:
+        - zmcx16@gmail.com

@@ -37,3 +37,26 @@ I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabul
 I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.Properties.Resources.zh-TW.resources
 I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\zh-TW\MemoOffVocabulary.resources.dll
 I:\work\WORK\graduate duty\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.csprojResolveAssemblyReference.cache
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\MemoOffVocabulary.exe.config
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\Interop.WMPLib.dll
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.csproj.ResolveComReference.cache
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.exe
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.pdb
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\MemoOffVocabulary.exe
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\MemoOffVocabulary.pdb
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\zh-TW\MemoOffVocabulary.resources.dll
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\HtmlAgilityPack.dll
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\Newtonsoft.Json.dll
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\HtmlAgilityPack.pdb
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\HtmlAgilityPack.xml
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\bin\Debug\Newtonsoft.Json.xml
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.csprojResolveAssemblyReference.cache
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.EditForm.resources
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.ManageDeck.resources
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.MemoOffForm.resources
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.Properties.Resources.resources
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.SettingParameter.resources
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.WebCrawlerForm.resources
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.Properties.Resources.zh-TW.resources
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\MemoOffVocabulary.csproj.GenerateResource.Cache
+I:\work\WORK\C#\MemoOffVocabulary\MemoOffVocabulary\MemoOffVocabulary\obj\Debug\zh-TW\MemoOffVocabulary.resources.dll
