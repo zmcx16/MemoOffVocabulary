@@ -1,4 +1,5 @@
 # MemoOffVocabulary
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e7eb9f13561473f855a26a75b109969)](https://www.codacy.com/app/zmcx16/MemoOffVocabulary?utm_source=github.com&utm_medium=referral&utm_content=zmcx16/MemoOffVocabulary&utm_campaign=badger)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/zmcx16/MemoOffVocabulary?branch=master&svg=true)](https://ci.appveyor.com/project/zmcx16/memooffvocabulary)
 # Features
 1.	Force program window on top most.
