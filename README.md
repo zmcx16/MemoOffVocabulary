@@ -1,5 +1,6 @@
 # MemoOffVocabulary
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/zmcx16/MemoOffVocabulary?branch=master&svg=true)](https://ci.appveyor.com/project/zmcx16/memooffvocabulary)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8795451b204747aa897b15dc2cea5d64)](https://www.codacy.com/app/zmcx16/MemoOffVocabulary?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zmcx16/MemoOffVocabulary&amp;utm_campaign=Badge_Grade)
 # Features
 1.	Force program window on top most.
 2.	Support short, medium, long term study function.
