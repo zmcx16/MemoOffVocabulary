@@ -1,4 +1,5 @@
 # MemoOffVocabulary
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e7eb9f13561473f855a26a75b109969)](https://www.codacy.com/app/zmcx16/MemoOffVocabulary?utm_source=github.com&utm_medium=referral&utm_content=zmcx16/MemoOffVocabulary&utm_campaign=badger)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/zmcx16/MemoOffVocabulary?branch=master&svg=true)](https://ci.appveyor.com/project/zmcx16/memooffvocabulary)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8795451b204747aa897b15dc2cea5d64)](https://www.codacy.com/app/zmcx16/MemoOffVocabulary?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zmcx16/MemoOffVocabulary&amp;utm_campaign=Badge_Grade)
 # Features
