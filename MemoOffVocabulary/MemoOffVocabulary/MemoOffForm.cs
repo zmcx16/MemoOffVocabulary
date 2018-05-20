@@ -57,7 +57,8 @@ namespace MemoOffVocabulary
             this.ParameterToolStripMenuItem.Text = Global.resources.GetString("Parameter", Global.culture_info);
             this.webCrawlerToolStripMenuItem.Text = Global.resources.GetString("WebCrawler", Global.culture_info);
             this.languageToolStripMenuItem.Text = Global.resources.GetString("Language", Global.culture_info);
-
+            this.helpToolStripMenuItem.Text = Global.resources.GetString("Help", Global.culture_info);
+            this.aboutMemoOffVocabularyToolStripMenuItem.Text = Global.resources.GetString("About_MemoOffVocabulary", Global.culture_info);
 
             comboBoxParseSource.Items[0] = Global.resources.GetString("None", Global.culture_info);
             for (int i = 1; i < Translation.TransMappingTable.Count; i++)
@@ -390,6 +391,19 @@ namespace MemoOffVocabulary
         private void buttonClear_MouseUp(object sender, MouseEventArgs e)
         {
             SetbuttonState(buttonClear, button_font_size, Properties.Resources.button0);
+        }
+
+        private void aboutMemoOffVocabularyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            StopAllTimer();
+            SetProcessBottom();
+
+            AboutForm form = new AboutForm();
+            form.ShowDialog();
+            form.Dispose();
+
+            StartAllTimer();
         }
 
         private void ManageDeckToolStripMenuItem_Click(object sender, EventArgs e)

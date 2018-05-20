@@ -93,6 +93,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
       <DependentUpon>WebCrawlerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="win32API.cs" />
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm.resx">
       <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,7 +203,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MaidChanIcon.ico" />
     <Content Include="memo_hotaru1_.ico" />
     <None Include="Resources\Memo_Hotaru2.png" />
     <None Include="Resources\Memo_Hotaru1.png" />

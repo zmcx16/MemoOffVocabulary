@@ -61,6 +61,15 @@ namespace MemoOffVocabulary.Properties {
         }
         
         /// <summary>
+        ///   查詢類似 About MemoOffVocabulary 的當地語系化字串。
+        /// </summary>
+        internal static string About_MemoOffVocabulary {
+            get {
+                return ResourceManager.GetString("About_MemoOffVocabulary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Add 的當地語系化字串。
         /// </summary>
         internal static string Add {
@@ -293,6 +302,15 @@ namespace MemoOffVocabulary.Properties {
         internal static string GoodHours {
             get {
                 return ResourceManager.GetString("GoodHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Help 的當地語系化字串。
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
             }
         }
         

@@ -262,4 +262,10 @@
   <data name="YahooDictEN_CHT" xml:space="preserve">
     <value>Yahoo Dict (EN-&gt;CHT)</value>
   </data>
+  <data name="About_MemoOffVocabulary" xml:space="preserve">
+    <value>About MemoOffVocabulary</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
 </root>

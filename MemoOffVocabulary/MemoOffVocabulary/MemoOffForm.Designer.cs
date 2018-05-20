@@ -54,6 +54,8 @@
             this.comboBoxDeck = new System.Windows.Forms.ComboBox();
             this.timer_study = new System.Windows.Forms.Timer(this.components);
             this.comboBoxParseSource = new System.Windows.Forms.ComboBox();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMemoOffVocabularyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlForm.SuspendLayout();
             this.tabPageStudy.SuspendLayout();
             this.tabPageAddCard.SuspendLayout();
@@ -225,10 +227,11 @@
             this.menuStripForm.BackColor = System.Drawing.Color.Azure;
             this.menuStripForm.ImageScalingSize = new System.Drawing.Size(22, 22);
             this.menuStripForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingToolStripMenuItem});
+            this.settingToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStripForm.Location = new System.Drawing.Point(0, 0);
             this.menuStripForm.Name = "menuStripForm";
-            this.menuStripForm.Size = new System.Drawing.Size(616, 28);
+            this.menuStripForm.Size = new System.Drawing.Size(616, 30);
             this.menuStripForm.TabIndex = 1;
             this.menuStripForm.Text = "menuStrip1";
             // 
@@ -241,34 +244,34 @@
             this.webCrawlerToolStripMenuItem,
             this.languageToolStripMenuItem});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(75, 26);
             this.settingToolStripMenuItem.Text = "Setting";
             // 
             // CreateDeckToolStripMenuItem
             // 
             this.CreateDeckToolStripMenuItem.Name = "CreateDeckToolStripMenuItem";
-            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.CreateDeckToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
             this.CreateDeckToolStripMenuItem.Text = "Create Deck";
             this.CreateDeckToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemCreateDeck_Click);
             // 
             // ManageDeckToolStripMenuItem
             // 
             this.ManageDeckToolStripMenuItem.Name = "ManageDeckToolStripMenuItem";
-            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.ManageDeckToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
             this.ManageDeckToolStripMenuItem.Text = "Manage Deck";
             this.ManageDeckToolStripMenuItem.Click += new System.EventHandler(this.ManageDeckToolStripMenuItem_Click);
             // 
             // ParameterToolStripMenuItem
             // 
             this.ParameterToolStripMenuItem.Name = "ParameterToolStripMenuItem";
-            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.ParameterToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
             this.ParameterToolStripMenuItem.Text = "Parameter";
             this.ParameterToolStripMenuItem.Click += new System.EventHandler(this.ParameterToolStripMenuItem_Click);
             // 
             // webCrawlerToolStripMenuItem
             // 
             this.webCrawlerToolStripMenuItem.Name = "webCrawlerToolStripMenuItem";
-            this.webCrawlerToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.webCrawlerToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
             this.webCrawlerToolStripMenuItem.Text = "Web Crawler";
             this.webCrawlerToolStripMenuItem.Click += new System.EventHandler(this.webCrawlerToolStripMenuItem_Click);
             // 
@@ -278,7 +281,7 @@
             this.englishToolStripMenuItem,
             this.tradChineseToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(190, 28);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(193, 28);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // englishToolStripMenuItem
@@ -318,6 +321,21 @@
             this.comboBoxParseSource.TabIndex = 3;
             this.comboBoxParseSource.SelectedIndexChanged += new System.EventHandler(this.comboBoxParseSource_SelectedIndexChanged);
             this.comboBoxParseSource.SelectionChangeCommitted += new System.EventHandler(this.comboBoxParseSource_SelectionChangeCommitted);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutMemoOffVocabularyToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(56, 26);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutMemoOffVocabularyToolStripMenuItem
+            // 
+            this.aboutMemoOffVocabularyToolStripMenuItem.Name = "aboutMemoOffVocabularyToolStripMenuItem";
+            this.aboutMemoOffVocabularyToolStripMenuItem.Size = new System.Drawing.Size(294, 28);
+            this.aboutMemoOffVocabularyToolStripMenuItem.Text = "About MemoOffVocabulary";
+            this.aboutMemoOffVocabularyToolStripMenuItem.Click += new System.EventHandler(this.aboutMemoOffVocabularyToolStripMenuItem_Click);
             // 
             // MemoOffForm
             // 
@@ -376,6 +394,8 @@
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tradChineseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutMemoOffVocabularyToolStripMenuItem;
     }
 }
 
