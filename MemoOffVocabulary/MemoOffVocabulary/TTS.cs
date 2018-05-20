@@ -28,7 +28,7 @@ namespace MemoOffVocabulary
                         }
                         catch (Exception ex)
                         {
-                            EventLog.Write("Fail download Google TTS, ignore fail download");
+                            EventLog.Write("Fail download Google TTS, ignore fail download, error message = "+ ex.ToString());
                         }
                         break;
                     default:

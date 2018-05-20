@@ -118,6 +118,11 @@ namespace MemoOffVocabulary
             // 
             // buttonSave
             // 
+            this.buttonSave.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSave.FlatAppearance.BorderSize = 0;
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonSave.Location = new System.Drawing.Point(619, 464);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(134, 35);
@@ -125,9 +130,16 @@ namespace MemoOffVocabulary
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonSave_MouseDown);
+            this.buttonSave.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonSave_MouseUp);
             // 
             // buttonBack
             // 
+            this.buttonBack.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonBack.Location = new System.Drawing.Point(902, 464);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(134, 35);
@@ -135,11 +147,14 @@ namespace MemoOffVocabulary
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            this.buttonBack.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonBack_MouseDown);
+            this.buttonBack.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonBack_MouseUp);
             // 
             // ManageDeck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(1071, 545);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonSave);

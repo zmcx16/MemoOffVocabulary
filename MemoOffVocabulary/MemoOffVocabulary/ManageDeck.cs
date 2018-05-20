@@ -21,6 +21,8 @@ namespace MemoOffVocabulary
         DifflistBoxDeckListSize, DifflistBoxKeyWordSize, DifftextBoxValueWordSize,
         DiffbuttonSaveLocation, DiffbuttonBackLocation;
 
+        const float button_font_size = 9.969231F;
+        const float button_font_press_size = 9.5F;
         public ManageDeck()
         {
             InitializeComponent();
@@ -290,6 +292,34 @@ namespace MemoOffVocabulary
                 FocusControlName = listBoxKeyWord.Name;
 
             DeleteDeckOrCard(FocusControlName);
+        }
+        private void SetbuttonState(Button button, float font_size, Bitmap button_img)
+        {
+            button.BackgroundImage = button_img;
+
+            FontStyle fs = button.Font.Style;
+            FontFamily ff = new FontFamily(buttonSave.Font.Name);
+            Font f = new Font(ff, font_size, fs);
+            button.Font = f;
+        }
+        private void buttonSave_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonSave, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonSave_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonSave, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonBack_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonBack, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonBack_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonBack, button_font_size, Properties.Resources.button0);
         }
 
         private void listBoxDeckList_KeyUp(object sender, KeyEventArgs e)

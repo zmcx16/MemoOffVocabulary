@@ -28,6 +28,9 @@ namespace MemoOffVocabulary
               DiffcomboBoxDeckLocation, DiffcomboBoxParseSourceLocation, DiffbuttonGoodLocation, DiffbuttonEasyLocation, DiffbuttonAgainLocation, DiffbuttonAddLocation, DiffbuttonClearLocation,
                                                                          DiffbuttonGoodSize, DiffbuttonEasySize, DiffbuttonAgainSize, DiffbuttonAddSize, DiffbuttonClearSize;
 
+        const float button_font_size = 9.969231F;
+        const float button_font_press_size = 9.5F;
+
         private void MemoOffForm_Load(object sender, EventArgs e)
         {
 
@@ -65,6 +68,9 @@ namespace MemoOffVocabulary
         {
             InitializeComponent();
 
+            string version = typeof(MemoOffForm).Assembly.GetName().Version.Major.ToString() + "." + typeof(MemoOffForm).Assembly.GetName().Version.Minor.ToString();
+            this.Text = "MemoOffVocabulary Ver" + version + " by zmcx16";
+
             comboBoxParseSource.Items.Add("None");
             for (int i = 0; i < Translation.TransMappingTable.Count; i++)
                 comboBoxParseSource.Items.Add(Translation.TransMappingTable.Keys.ElementAt(i));
@@ -88,6 +94,7 @@ namespace MemoOffVocabulary
             SaveControlsLocationSize();
 
             ResettingLanguage();
+
         }
 
         public void SaveControlsLocationSize()
@@ -335,6 +342,56 @@ namespace MemoOffVocabulary
             StartAllTimer();
         }
 
+        private void buttonAgain_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonAgain, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonAgain_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonAgain, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonGood_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonGood, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonGood_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonGood, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonEasy_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonEasy, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonEasy_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonEasy, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonAdd_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonAdd, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonAdd_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonAdd, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonClear_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonClear, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonClear_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonClear, button_font_size, Properties.Resources.button0);
+        }
+
         private void ManageDeckToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StopAllTimer();
@@ -500,6 +557,16 @@ namespace MemoOffVocabulary
                     buttonClear.Width = textBoxKeyword_a.Width / 2 - 10;
                 }
             }
+        }
+
+        private void SetbuttonState(Button button, float font_size, Bitmap button_img)
+        {
+            button.BackgroundImage = button_img;
+
+            FontStyle fs = button.Font.Style;
+            FontFamily ff = new FontFamily(buttonAdd.Font.Name);
+            Font f = new Font(ff, font_size, fs);
+            button.Font = f;
         }
 
     }

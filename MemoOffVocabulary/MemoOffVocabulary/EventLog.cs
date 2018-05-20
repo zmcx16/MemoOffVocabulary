@@ -15,7 +15,7 @@ namespace MemoOffVocabulary
         public static void Write(string message)
         {
             if (string.IsNullOrEmpty(log_path))
-                log_path = Directory.GetCurrentDirectory();
+                log_path = Directory.GetCurrentDirectory()+"\\log";
             
             if (!Directory.Exists(log_path))
                 Directory.CreateDirectory(log_path);

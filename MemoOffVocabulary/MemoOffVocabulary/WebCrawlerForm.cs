@@ -22,6 +22,8 @@ namespace MemoOffVocabulary
         delegate void SetControlStringCallback(Control ControlObject, string SetValue);
         delegate void SetProgressBarIntCallback(ProgressBar pb, int SetValue);
 
+        const float button_font_size = 9.969231F;
+        const float button_font_press_size = 9.5F;
         public WebCrawlerForm()
         {
             InitializeComponent();
@@ -193,6 +195,46 @@ namespace MemoOffVocabulary
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonBack_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonBack, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonBack_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonBack, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonStop_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonStop, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonStop_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonStop, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonDownload_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonDownload, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonDownload_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonDownload, button_font_size, Properties.Resources.button0);
+        }
+
+        private void SetbuttonState(Button button, float font_size, Bitmap button_img)
+        {
+            button.BackgroundImage = button_img;
+
+            FontStyle fs = button.Font.Style;
+            FontFamily ff = new FontFamily(buttonBack.Font.Name);
+            Font f = new Font(ff, font_size, fs);
+            button.Font = f;
         }
     }
 }

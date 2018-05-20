@@ -15,6 +15,8 @@ namespace MemoOffVocabulary
     {
         List<Tuple<string, int>> TTS_DecksSpeechType;
 
+        const float button_font_size = 9.969231F;
+        const float button_font_press_size = 9.5F;
         public SettingParameter()
         {
             InitializeComponent();
@@ -187,6 +189,35 @@ namespace MemoOffVocabulary
         private void comboBoxTTS_SpeechType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSave_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonSave, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonSave_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonSave, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonCancel_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonCancel, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonCancel_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonCancel, button_font_size, Properties.Resources.button0);
+        }
+        private void SetbuttonState(Button button, float font_size, Bitmap button_img)
+        {
+            button.BackgroundImage = button_img;
+
+            FontStyle fs = button.Font.Style;
+            FontFamily ff = new FontFamily(buttonSave.Font.Name);
+            Font f = new Font(ff, font_size, fs);
+            button.Font = f;
         }
     }
 }

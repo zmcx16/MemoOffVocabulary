@@ -57,7 +57,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(329, 18);
             this.label1.TabIndex = 1;
-            this.label1.Text = Global.resources.GetString("SelectDeckSourceAndInputNewCardList", Global.culture_info);
+            this.label1.Text = "Select Deck, Source and Input New Card List:";
             // 
             // progressBarDownload
             // 
@@ -68,33 +68,54 @@
             // 
             // buttonDownload
             // 
+            this.buttonDownload.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonDownload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonDownload.FlatAppearance.BorderSize = 0;
+            this.buttonDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDownload.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonDownload.Location = new System.Drawing.Point(12, 381);
             this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(119, 30);
+            this.buttonDownload.Size = new System.Drawing.Size(119, 39);
             this.buttonDownload.TabIndex = 4;
-            this.buttonDownload.Text = Global.resources.GetString("Download", Global.culture_info);
+            this.buttonDownload.Text = "Download";
             this.buttonDownload.UseVisualStyleBackColor = true;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
+            this.buttonDownload.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonDownload_MouseDown);
+            this.buttonDownload.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonDownload_MouseUp);
             // 
             // buttonStop
             // 
+            this.buttonStop.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonStop.FlatAppearance.BorderSize = 0;
+            this.buttonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStop.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonStop.Location = new System.Drawing.Point(148, 381);
             this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(119, 30);
+            this.buttonStop.Size = new System.Drawing.Size(119, 39);
             this.buttonStop.TabIndex = 5;
-            this.buttonStop.Text = Global.resources.GetString("Stop", Global.culture_info);
+            this.buttonStop.Text = "Stop";
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
+            this.buttonStop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonStop_MouseDown);
+            this.buttonStop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonStop_MouseUp);
             // 
             // buttonBack
             // 
+            this.buttonBack.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonBack.Location = new System.Drawing.Point(282, 381);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(119, 30);
+            this.buttonBack.Size = new System.Drawing.Size(119, 39);
             this.buttonBack.TabIndex = 6;
-            this.buttonBack.Text = Global.resources.GetString("Back", Global.culture_info);
+            this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            this.buttonBack.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonBack_MouseDown);
+            this.buttonBack.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonBack_MouseUp);
             // 
             // labelProgressBar
             // 
@@ -129,6 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(413, 434);
             this.Controls.Add(this.comboBoxDeck);
             this.Controls.Add(this.labelProgressBar);
@@ -141,7 +163,7 @@
             this.Controls.Add(this.textBoxWordList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WebCrawlerForm";
-            this.Text = Global.resources.GetString("WebCrawler", Global.culture_info);
+            this.Text = "Web Crawler";
             this.ResumeLayout(false);
             this.PerformLayout();
 

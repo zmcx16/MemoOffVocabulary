@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>MaidChanIcon.ico</ApplicationIcon>
+    <ApplicationIcon>memo_hotaru1_.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -195,6 +195,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MaidChanIcon.ico" />
+    <Content Include="memo_hotaru1_.ico" />
+    <None Include="Resources\Memo_Hotaru2.png" />
+    <None Include="Resources\Memo_Hotaru1.png" />
+    <None Include="Resources\button0_1.png" />
+    <None Include="Resources\button0.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

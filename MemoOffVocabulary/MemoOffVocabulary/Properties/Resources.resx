@@ -141,6 +141,13 @@
   <data name="Back" xml:space="preserve">
     <value>Back</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button0_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button0_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -197,6 +204,12 @@
   </data>
   <data name="ManageDeck" xml:space="preserve">
     <value>Manage Deck</value>
+  </data>
+  <data name="Memo_Hotaru1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Memo_Hotaru1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Memo_Hotaru2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Memo_Hotaru2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>None</value>

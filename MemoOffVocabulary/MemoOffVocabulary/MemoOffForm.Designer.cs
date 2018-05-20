@@ -64,7 +64,7 @@
             // 
             this.tabControlForm.Controls.Add(this.tabPageStudy);
             this.tabControlForm.Controls.Add(this.tabPageAddCard);
-            this.tabControlForm.Location = new System.Drawing.Point(8, 31);
+            this.tabControlForm.Location = new System.Drawing.Point(4, 40);
             this.tabControlForm.Name = "tabControlForm";
             this.tabControlForm.SelectedIndex = 0;
             this.tabControlForm.Size = new System.Drawing.Size(602, 199);
@@ -73,6 +73,7 @@
             // 
             // tabPageStudy
             // 
+            this.tabPageStudy.BackColor = System.Drawing.Color.LightSkyBlue;
             this.tabPageStudy.Controls.Add(this.buttonEasy);
             this.tabPageStudy.Controls.Add(this.buttonGood);
             this.tabPageStudy.Controls.Add(this.buttonAgain);
@@ -84,10 +85,14 @@
             this.tabPageStudy.Size = new System.Drawing.Size(594, 169);
             this.tabPageStudy.TabIndex = 0;
             this.tabPageStudy.Text = "Study";
-            this.tabPageStudy.UseVisualStyleBackColor = true;
             // 
             // buttonEasy
             // 
+            this.buttonEasy.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonEasy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonEasy.FlatAppearance.BorderSize = 0;
+            this.buttonEasy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEasy.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonEasy.Location = new System.Drawing.Point(424, 121);
             this.buttonEasy.Name = "buttonEasy";
             this.buttonEasy.Size = new System.Drawing.Size(153, 39);
@@ -95,9 +100,16 @@
             this.buttonEasy.Text = "Easy";
             this.buttonEasy.UseVisualStyleBackColor = true;
             this.buttonEasy.Click += new System.EventHandler(this.buttonEasy_Click);
+            this.buttonEasy.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonEasy_MouseDown);
+            this.buttonEasy.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonEasy_MouseUp);
             // 
             // buttonGood
             // 
+            this.buttonGood.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonGood.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonGood.FlatAppearance.BorderSize = 0;
+            this.buttonGood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGood.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonGood.Location = new System.Drawing.Point(217, 121);
             this.buttonGood.Name = "buttonGood";
             this.buttonGood.Size = new System.Drawing.Size(153, 39);
@@ -105,9 +117,16 @@
             this.buttonGood.Text = "Good";
             this.buttonGood.UseVisualStyleBackColor = true;
             this.buttonGood.Click += new System.EventHandler(this.buttonGood_Click);
+            this.buttonGood.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonGood_MouseDown);
+            this.buttonGood.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonGood_MouseUp);
             // 
             // buttonAgain
             // 
+            this.buttonAgain.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonAgain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAgain.FlatAppearance.BorderSize = 0;
+            this.buttonAgain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAgain.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.buttonAgain.Location = new System.Drawing.Point(6, 121);
             this.buttonAgain.Name = "buttonAgain";
             this.buttonAgain.Size = new System.Drawing.Size(153, 39);
@@ -115,6 +134,8 @@
             this.buttonAgain.Text = "Again";
             this.buttonAgain.UseVisualStyleBackColor = true;
             this.buttonAgain.Click += new System.EventHandler(this.buttonAgain_Click);
+            this.buttonAgain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonAgain_MouseDown);
+            this.buttonAgain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonAgain_MouseUp);
             // 
             // textBoxValueword_s
             // 
@@ -135,6 +156,7 @@
             // 
             // tabPageAddCard
             // 
+            this.tabPageAddCard.BackColor = System.Drawing.Color.LightSkyBlue;
             this.tabPageAddCard.Controls.Add(this.textBoxValueword_a);
             this.tabPageAddCard.Controls.Add(this.textBoxKeyword_a);
             this.tabPageAddCard.Controls.Add(this.buttonClear);
@@ -145,7 +167,6 @@
             this.tabPageAddCard.Size = new System.Drawing.Size(594, 169);
             this.tabPageAddCard.TabIndex = 1;
             this.tabPageAddCard.Text = "Add Card";
-            this.tabPageAddCard.UseVisualStyleBackColor = true;
             this.tabPageAddCard.Click += new System.EventHandler(this.tabPageAddCard_Click);
             // 
             // textBoxValueword_a
@@ -167,26 +188,41 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(323, 121);
+            this.buttonClear.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonClear.FlatAppearance.BorderSize = 0;
+            this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClear.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonClear.Location = new System.Drawing.Point(427, 124);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(255, 39);
+            this.buttonClear.Size = new System.Drawing.Size(150, 39);
             this.buttonClear.TabIndex = 1;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            this.buttonClear.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonClear_MouseDown);
+            this.buttonClear.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonClear_MouseUp);
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(6, 121);
+            this.buttonAdd.BackgroundImage = global::MemoOffVocabulary.Properties.Resources.button0;
+            this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAdd.FlatAppearance.BorderSize = 0;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdd.Font = new System.Drawing.Font("新細明體", 9.969231F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonAdd.Location = new System.Drawing.Point(220, 124);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(255, 39);
+            this.buttonAdd.Size = new System.Drawing.Size(150, 39);
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAdd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonAdd_MouseDown);
+            this.buttonAdd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonAdd_MouseUp);
             // 
             // menuStripForm
             // 
+            this.menuStripForm.BackColor = System.Drawing.Color.Azure;
             this.menuStripForm.ImageScalingSize = new System.Drawing.Size(22, 22);
             this.menuStripForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingToolStripMenuItem});
@@ -287,7 +323,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 235);
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.ClientSize = new System.Drawing.Size(616, 245);
             this.Controls.Add(this.comboBoxParseSource);
             this.Controls.Add(this.comboBoxDeck);
             this.Controls.Add(this.tabControlForm);
@@ -295,7 +332,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripForm;
             this.Name = "MemoOffForm";
-            this.Text = "MemoOffVocabulary Ver1.2 by zmcx16";
+            this.Text = "MemoOffVocabulary by zmcx16";
             this.Activated += new System.EventHandler(this.MemoOffForm_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MemoOffForm_FormClosing);
             this.Load += new System.EventHandler(this.MemoOffForm_Load);

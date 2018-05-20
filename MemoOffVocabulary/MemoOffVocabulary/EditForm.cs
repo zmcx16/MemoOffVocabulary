@@ -12,6 +12,9 @@ namespace MemoOffVocabulary
 {
     public partial class EditForm : Form
     {
+        const float button_font_size = 9.969231F;
+        const float button_font_press_size = 9.5F;
+
         StringBuilder EditValue;
         public EditForm(StringBuilder OutputEditValue, string InputEditText, string ButtonOKText, string ButtonCancelText, string FormText)
         {
@@ -39,6 +42,36 @@ namespace MemoOffVocabulary
         private void EditForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetbuttonState(Button button, float font_size, Bitmap button_img)
+        {
+            button.BackgroundImage = button_img;
+
+            FontStyle fs = button.Font.Style;
+            FontFamily ff = new FontFamily(buttonOK.Font.Name);
+            Font f = new Font(ff, font_size, fs);
+            button.Font = f;
+        }
+
+        private void buttonOK_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonOK, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonOK_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonOK, button_font_size, Properties.Resources.button0);
+        }
+
+        private void buttonCancel_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonCancel, button_font_press_size, Properties.Resources.button0_1);
+        }
+
+        private void buttonCancel_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetbuttonState(buttonCancel, button_font_size, Properties.Resources.button0);
         }
     }
 }

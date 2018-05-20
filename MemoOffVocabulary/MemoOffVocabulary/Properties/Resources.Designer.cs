@@ -133,6 +133,26 @@ namespace MemoOffVocabulary.Properties {
         }
         
         /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap button0 {
+            get {
+                object obj = ResourceManager.GetObject("button0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap button0_1 {
+            get {
+                object obj = ResourceManager.GetObject("button0_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Cancel 的當地語系化字串。
         /// </summary>
         internal static string Cancel {
@@ -300,6 +320,26 @@ namespace MemoOffVocabulary.Properties {
         internal static string ManageDeck {
             get {
                 return ResourceManager.GetString("ManageDeck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Memo_Hotaru1 {
+            get {
+                object obj = ResourceManager.GetObject("Memo_Hotaru1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Memo_Hotaru2 {
+            get {
+                object obj = ResourceManager.GetObject("Memo_Hotaru2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
