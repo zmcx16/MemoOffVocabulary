@@ -56,7 +56,7 @@ namespace MemoOffVocabulary
             HtmlDocument MeanHtmlDoc = new HtmlDocument();
             MeanHtmlDoc.Load(RawMeanHTML,Encoding.UTF8);
 
-            HtmlNode NavNode = MeanHtmlDoc.DocumentNode.SelectSingleNode("//*[@id=\"web\"]/ol[1]/li[2]/div/ul");
+            HtmlNode NavNode = MeanHtmlDoc.DocumentNode.SelectSingleNode("//*[@id=\"web\"]/ol[1]/li[2]/div/div[2]/div[1]/div[1]/ul[1]");
             if (NavNode==null || NavNode.ChildNodes.Count == 0)
                 return false;
 

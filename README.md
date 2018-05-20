@@ -25,6 +25,8 @@
 
 ![image](https://github.com/zmcx16/MemoOffVocabulary/blob/master/Demo/demo7.png)
 
+![image](https://github.com/zmcx16/MemoOffVocabulary/blob/master/Demo/demo8.png)
+
 # License
 This project is licensed under the terms of the GPL-3.0 license.
 

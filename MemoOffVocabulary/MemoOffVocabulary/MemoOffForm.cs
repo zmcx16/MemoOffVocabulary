@@ -71,6 +71,7 @@ namespace MemoOffVocabulary
 
             string version = typeof(MemoOffForm).Assembly.GetName().Version.Major.ToString() + "." + typeof(MemoOffForm).Assembly.GetName().Version.Minor.ToString();
             this.Text = "MemoOffVocabulary Ver" + version + " by zmcx16";
+            File.WriteAllText("version.txt", version);
 
             comboBoxParseSource.Items.Add("None");
             for (int i = 0; i < Translation.TransMappingTable.Count; i++)

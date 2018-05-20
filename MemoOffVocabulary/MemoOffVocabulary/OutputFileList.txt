@@ -1,0 +1,5 @@
+version.txt
+HtmlAgilityPack.dll
+MemoOffVocabulary.exe
+Newtonsoft.Json.dll
+zh-TW\MemoOffVocabulary.resources.dll
